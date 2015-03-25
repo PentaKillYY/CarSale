@@ -42,6 +42,8 @@
 		099B5EF91ABA5E2A00DAA888 /* CarSaleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSaleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		099B5EFE1ABA5E2A00DAA888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		099B5EFF1ABA5E2A00DAA888 /* CarSaleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarSaleTests.m; sourceTree = "<group>"; };
+		09DBBA9F1AC2992A007BDC34 /* AppMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMarco.h; sourceTree = "<group>"; };
+		09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMarco.h; sourceTree = "<group>"; };
 		50DA6B6384E78A85CAC6E74D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		751718F849A2F67EB7B5857A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C23664D734D7EE63794CD138 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 		099B5F091ABA5E5900DAA888 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				09DBBA9E1AC29915007BDC34 /* Marco */,
 				099B5EE41ABA5E2A00DAA888 /* AppDelegate.h */,
 				099B5EE51ABA5E2A00DAA888 /* AppDelegate.m */,
 			);
@@ -223,6 +226,15 @@
 			children = (
 			);
 			name = Launch;
+			sourceTree = "<group>";
+		};
+		09DBBA9E1AC29915007BDC34 /* Marco */ = {
+			isa = PBXGroup;
+			children = (
+				09DBBA9F1AC2992A007BDC34 /* AppMarco.h */,
+				09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */,
+			);
+			name = Marco;
 			sourceTree = "<group>";
 		};
 		5164019A9D2E34D91EB6AB25 /* Frameworks */ = {
