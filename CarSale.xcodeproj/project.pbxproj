@@ -14,6 +14,9 @@
 		099B5EEF1ABA5E2A00DAA888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EED1ABA5E2A00DAA888 /* Main.storyboard */; };
 		099B5EF11ABA5E2A00DAA888 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EF01ABA5E2A00DAA888 /* Images.xcassets */; };
 		099B5F001ABA5E2A00DAA888 /* CarSaleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 099B5EFF1ABA5E2A00DAA888 /* CarSaleTests.m */; };
+		09F8583F1AC39B220019806F /* BaseHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8583E1AC39B220019806F /* BaseHttpRequest.m */; };
+		09F858421AC3A14C0019806F /* MenuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858411AC3A14C0019806F /* MenuRequest.m */; };
+		09F858451AC3AFA00019806F /* CarRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858441AC3AFA00019806F /* CarRequest.m */; };
 		C07872317F2331C1E1CAA2B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C23664D734D7EE63794CD138 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,12 @@
 		09DBBA9F1AC2992A007BDC34 /* AppMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMarco.h; sourceTree = "<group>"; };
 		09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMarco.h; sourceTree = "<group>"; };
 		09DBBAA21AC29CE2007BDC34 /* AppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
+		09F8583D1AC39B220019806F /* BaseHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHttpRequest.h; sourceTree = "<group>"; };
+		09F8583E1AC39B220019806F /* BaseHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHttpRequest.m; sourceTree = "<group>"; };
+		09F858401AC3A14C0019806F /* MenuRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuRequest.h; sourceTree = "<group>"; };
+		09F858411AC3A14C0019806F /* MenuRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuRequest.m; sourceTree = "<group>"; };
+		09F858431AC3AFA00019806F /* CarRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRequest.h; sourceTree = "<group>"; };
+		09F858441AC3AFA00019806F /* CarRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRequest.m; sourceTree = "<group>"; };
 		50DA6B6384E78A85CAC6E74D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		751718F849A2F67EB7B5857A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C23664D734D7EE63794CD138 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +222,10 @@
 		099B5F111ABA5EDD00DAA888 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				09F858401AC3A14C0019806F /* MenuRequest.h */,
+				09F858411AC3A14C0019806F /* MenuRequest.m */,
+				09F858431AC3AFA00019806F /* CarRequest.h */,
+				09F858441AC3AFA00019806F /* CarRequest.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -243,6 +256,8 @@
 		09DBBAA11AC29BD3007BDC34 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				09F8583D1AC39B220019806F /* BaseHttpRequest.h */,
+				09F8583E1AC39B220019806F /* BaseHttpRequest.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -390,8 +405,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				099B5EE61ABA5E2A00DAA888 /* AppDelegate.m in Sources */,
+				09F8583F1AC39B220019806F /* BaseHttpRequest.m in Sources */,
+				09F858451AC3AFA00019806F /* CarRequest.m in Sources */,
 				099B5EE91ABA5E2A00DAA888 /* MasterViewController.m in Sources */,
 				099B5EE31ABA5E2A00DAA888 /* main.m in Sources */,
+				09F858421AC3A14C0019806F /* MenuRequest.m in Sources */,
 				099B5EEC1ABA5E2A00DAA888 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
