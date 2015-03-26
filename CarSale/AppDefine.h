@@ -9,9 +9,9 @@
 #ifndef CarSale_AppDefine_h
 #define CarSale_AppDefine_h
 
-static NSString*const BaseURLString = @"http://10.12.30.93:6655/webservice/";
+static NSString*const BaseURLString = @"http://121.41.117.51:6655/webservice/";
 
-#define MenuTable @"GetMenuTable"
-#define CarTable @"GetCarTable"
+#define kMenuTable @"GetMenuTable"
+#define kCarTable @"GetCarTable"
 
 #endif
