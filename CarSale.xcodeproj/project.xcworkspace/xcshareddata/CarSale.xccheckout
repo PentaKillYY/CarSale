@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>49162583-123A-4DF4-A797-E44B5485FEE2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CarSale</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1ECFC44BB5453C103A85E1B7B74233DCC438280B</key>
+		<string>https://github.com/PentaKillYY/CarSale.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CarSale.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1ECFC44BB5453C103A85E1B7B74233DCC438280B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/PentaKillYY/CarSale.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1ECFC44BB5453C103A85E1B7B74233DCC438280B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1ECFC44BB5453C103A85E1B7B74233DCC438280B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CarSale</string>
+		</dict>
+	</array>
+</dict>
+</plist>

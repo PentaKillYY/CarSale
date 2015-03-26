@@ -44,6 +44,7 @@
 		099B5EFF1ABA5E2A00DAA888 /* CarSaleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarSaleTests.m; sourceTree = "<group>"; };
 		09DBBA9F1AC2992A007BDC34 /* AppMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMarco.h; sourceTree = "<group>"; };
 		09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMarco.h; sourceTree = "<group>"; };
+		09DBBAA21AC29CE2007BDC34 /* AppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
 		50DA6B6384E78A85CAC6E74D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		751718F849A2F67EB7B5857A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C23664D734D7EE63794CD138 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				099B5F091ABA5E5900DAA888 /* Application */,
+				09DBBAA11AC29BD3007BDC34 /* Base */,
 				099B5F0F1ABA5EBB00DAA888 /* Model */,
 				099B5F101ABA5ECB00DAA888 /* View */,
 				099B5F0A1ABA5E6900DAA888 /* Controller */,
@@ -147,6 +149,7 @@
 				09DBBA9E1AC29915007BDC34 /* Marco */,
 				099B5EE41ABA5E2A00DAA888 /* AppDelegate.h */,
 				099B5EE51ABA5E2A00DAA888 /* AppDelegate.m */,
+				09DBBAA21AC29CE2007BDC34 /* AppDefine.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -235,6 +238,13 @@
 				09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */,
 			);
 			name = Marco;
+			sourceTree = "<group>";
+		};
+		09DBBAA11AC29BD3007BDC34 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		5164019A9D2E34D91EB6AB25 /* Frameworks */ = {
