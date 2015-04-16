@@ -57,26 +57,21 @@
     if (self.detailItem) {
         carId = [[NSString alloc] init];
         self.imageArray = [[NSMutableArray alloc] init];
-        [MBProgressHUD showHUDAddedTo:self.imageCollectionView animated:YES];
-        [MBProgressHUD showHUDAddedTo:self.carColorBG animated:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.carInfoView animated:YES];
-        hud.yOffset = 35;
+
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.yOffset = 27;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // 耗时的操作
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:[self.detailItem description] OnSuccess:^(NSArray *array) {
-                
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
                 [self prepareCarInfoDataSource];
                 [self prepareCarImageDataSource:0];
             }];
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 // 更新界面
-                [MBProgressHUD hideHUDForView:self.carInfoView animated:YES];
-                [MBProgressHUD hideAllHUDsForView:self.carColorBG animated:YES];
-                [MBProgressHUD hideAllHUDsForView:self.imageCollectionView animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
                 [self setCarInfoGridView];
                 [self setMainCarImageView:0];
