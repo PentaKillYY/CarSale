@@ -26,8 +26,8 @@
             
             NSString* localVersion = [[NSUserDefaults standardUserDefaults] valueForKey:@"VersionCount"];
                 if ([remoteVersion integerValue] > [localVersion integerValue]) {
-//                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"VersionCount"];
-//                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"VersionCount"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                     state(NO);
                 }else{
                     state(YES);

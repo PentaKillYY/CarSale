@@ -12,6 +12,7 @@
 #import "AppDefine.h"
 #import <UIImageView+WebCache.h>
 #import "ImgShowViewController.h"
+#import <MBProgressHUD.h>
 @interface DXSemiViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @end
@@ -21,10 +22,17 @@
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
         // Update the view.
-        
-        self.carDic = [NSDictionary dictionaryWithDictionary:(NSDictionary*)_detailItem];
-        
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // 耗时的操作
+            sleep(1);
+            self.carDic = [NSDictionary dictionaryWithDictionary:(NSDictionary*)_detailItem];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 更新界面
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.collectionView reloadData];
+            });
+        });
     }
 }
 
@@ -32,10 +40,10 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
-    
-    self.sideAnimationDuration = 0.3f;
+
+    self.sideAnimationDuration = 0.5f;
     self.sideOffset = 50.0f;
-    
+
     UIView *anotherView = [[UIView alloc] init];
     anotherView.backgroundColor = [UIColor clearColor];
     anotherView.userInteractionEnabled = YES;
@@ -43,8 +51,9 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissSemi:)];
 
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissSemi:)];
-    
     CGRect selfViewFrame = self.view.bounds;
+    
+    [self.contentView layer].shadowPath =[UIBezierPath bezierPathWithRect:self.contentView.bounds].CGPath;
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
     self.contentView.layer.shadowOffset = CGSizeMake(-10, 0);
     self.contentView.layer.shadowOpacity = 0.90;
@@ -107,7 +116,10 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[[self.carDic objectForKey:@"imageArray"] objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]]count];
+    if (self.carDic) {
+        return [[[self.carDic objectForKey:@"imageArray"] objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]]count];
+    }
+    return 0;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -116,8 +128,10 @@
     if (kind == UICollectionElementKindSectionHeader){
         AllCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"AllCollection" forIndexPath:indexPath];
         if (self.carDic) {
+            headerView.titleLabel.text = [self.carDic objectForKey:@"titlename"];
+        }else{
+            headerView.titleLabel.text = [NSString stringWithFormat:@"0 张"];
         }
-        headerView.titleLabel.text = [self.carDic objectForKey:@"titlename"];
         [headerView.backButton addTarget:self action:@selector(dismissSemi:) forControlEvents:UIControlEventTouchUpInside];
         reusableview = headerView;
         
@@ -129,14 +143,17 @@
 {
     ImageGalleryCell *cell = (ImageGalleryCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ImageGalleryCell" forIndexPath:indexPath];
     
-    NSMutableString* completeurl = [[NSMutableString alloc] init];
-    [completeurl appendString:BaseImageUrl];
-    [completeurl appendString:[self.carDic objectForKey:@"carid"]];
-    [completeurl appendString:[kImageFloder objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]]];
-    [completeurl appendString:@"/"];
-
-    [completeurl appendString:[[[self.carDic objectForKey:@"imageArray"] objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]] objectAtIndex:indexPath.row]];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    if (self.carDic) {
+        NSMutableString* completeurl = [[NSMutableString alloc] init];
+        [completeurl appendString:BaseImageUrl];
+        [completeurl appendString:[self.carDic objectForKey:@"carid"]];
+        [completeurl appendString:[kImageFloder objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]]];
+        [completeurl appendString:@"/"];
+        
+        [completeurl appendString:[[[self.carDic objectForKey:@"imageArray"] objectAtIndex:[[self.carDic objectForKey:@"sectionNumber"] integerValue]] objectAtIndex:indexPath.row]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    }
+    
     return cell;
 }
 

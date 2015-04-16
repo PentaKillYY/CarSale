@@ -19,6 +19,8 @@
 #import <DWBubbleMenuButton.h>
 #import "UIColor+HexColor.h"
 #import "DXSemiViewControllerCategory.h"
+#import <MBProgressHUD.h>
+
 @interface DetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XCMultiTableViewDataSource,ShowAllImageDelegate>
 {
     XCMultiTableView * xcMultiTableView;
@@ -55,17 +57,27 @@
     if (self.detailItem) {
         carId = [[NSString alloc] init];
         self.imageArray = [[NSMutableArray alloc] init];
+        [MBProgressHUD showHUDAddedTo:self.imageCollectionView animated:YES];
+        [MBProgressHUD showHUDAddedTo:self.carColorBG animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.carInfoView animated:YES];
+        hud.yOffset = 35;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // 耗时的操作
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:[self.detailItem description] OnSuccess:^(NSArray *array) {
+                
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
                 [self prepareCarInfoDataSource];
                 [self prepareCarImageDataSource:0];
             }];
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 // 更新界面
+                [MBProgressHUD hideHUDForView:self.carInfoView animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.carColorBG animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.imageCollectionView animated:YES];
+                
                 [self setCarInfoGridView];
                 [self setMainCarImageView:0];
                 [self setColorSelectedView];
@@ -236,7 +248,7 @@
     if (xcMultiTableView) {
         [xcMultiTableView removeFromSuperview];
     }
-    xcMultiTableView = [[XCMultiTableView alloc] initWithFrame:CGRectInset(CGRectMake(15, 70, 684, 120), 5.0f, 5.0f)];
+    xcMultiTableView = [[XCMultiTableView alloc] initWithFrame:CGRectInset(CGRectMake(10, 75, 694, 120), 5.0f, 5.0f)];
     xcMultiTableView.leftHeaderEnable = YES;
     xcMultiTableView.datasource = self;
     

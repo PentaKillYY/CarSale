@@ -53,19 +53,15 @@
     
     self.title = [NSString stringWithFormat:@"%d / %ld",_index+1,(unsigned long)[_data count]];
     self.view.frame  = CGRectMake(0, 0, SCREEN_HEIGHT  , SCREEN_WIDTH);
-    //设置导航栏为半透明
-    self.navigationController.navigationBar.translucent = YES;
-    // 隐藏标签栏
+        // 隐藏标签栏
     self.tabBarController.tabBar.hidden = YES;
-
-    // 隐藏导航栏
+    
+     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBarHidden = YES;
-
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.view addGestureRecognizer:tap];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_main"]];
     self.view.backgroundColor = [UIColor blackColor];
 

@@ -137,18 +137,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="704" height="250"/>
                                     </imageView>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsE-lK-tAt">
-                                        <rect key="frame" x="45" y="65" width="615" height="155"/>
+                                        <rect key="frame" x="23" y="82" width="658" height="141"/>
                                     </imageView>
                                 </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asc-Kf-xf5">
-                                <rect key="frame" x="0.0" y="270" width="704" height="200"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.png" highlightedImage="infoSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-AK-L7H">
-                                        <rect key="frame" x="0.0" y="0.0" width="704" height="70"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="erU-h3-rcL">
                                 <rect key="frame" x="0.0" y="470" width="704" height="298"/>
@@ -217,6 +208,15 @@
                                     <outlet property="delegate" destination="JEX-9P-axG" id="lrn-dC-s55"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asc-Kf-xf5">
+                                <rect key="frame" x="0.0" y="270" width="704" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.png" highlightedImage="infoSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="hgM-AK-L7H">
+                                        <rect key="frame" x="0.0" y="0.0" width="704" height="70"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -236,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="-2008"/>
+            <point key="canvasLocation" x="832" y="-2008"/>
         </scene>
         <!--Semi View Controller-->
         <scene sceneID="U8N-La-sZ8">

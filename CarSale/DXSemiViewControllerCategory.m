@@ -38,15 +38,9 @@
             break;
     }
     semiVC.view.frame = selfFrame;
-    [semiVC setDetailItem:caritem];
-/* overlayView if necessory */
-/*
-    UIView *overLayView = [[UIView alloc] initWithFrame:self.view.bounds];
-    overLayView.backgroundColor = [UIColor blackColor];
-    overLayView.alpha = 0.8;
-    [self.view addSubview:overLayView];
-*/
     
+    [semiVC setDetailItem:caritem];
+            // 更新界面
     [self.view addSubview:semiVC.view];
     [self addChildViewController:semiVC];
     [semiVC willMoveToParentViewController:self];
