@@ -9,7 +9,7 @@
 #import "BaseHttpRequest.h"
 
 @interface CarRequest : BaseHttpRequest
-+(instancetype)sharedHttpRequest;
++(instancetype)sharedCarRequest;
 -(void)postCarOnCompletion:(JSONResponse)completionBlock onFailure:(JSONResponse)failureBlock;
 
 @end

@@ -9,13 +9,13 @@
 #import "MenuRequest.h"
 
 @implementation MenuRequest
-+(instancetype)sharedHttpRequest{
-    static MenuRequest *sharedHttpRequest;
++(instancetype)sharedMenuRequest{
+    static MenuRequest *sharedMenuRequest;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedHttpRequest=[[MenuRequest alloc]init];
+        sharedMenuRequest=[[MenuRequest alloc]init];
     });
-    return sharedHttpRequest;
+    return sharedMenuRequest;
 }
 
 -(void)postMenuOnCompletion:(JSONResponse)completionBlock onFailure:(JSONResponse)failureBlock

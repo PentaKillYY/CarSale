@@ -6,3 +6,4 @@ pod 'SDWebImage', '~> 3.7.2'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'FMDB', '~> 2.5'
 pod 'LKDBHelper', :head
+pod 'DWBubbleMenuButton', '~> 1.0.1'

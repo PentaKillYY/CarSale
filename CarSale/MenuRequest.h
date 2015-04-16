@@ -9,6 +9,6 @@
 #import "BaseHttpRequest.h"
 
 @interface MenuRequest : BaseHttpRequest
-+(instancetype)sharedHttpRequest;
++(instancetype)sharedMenuRequest;
 -(void)postMenuOnCompletion:(JSONResponse)completionBlock onFailure:(JSONResponse)failureBlock;
 @end

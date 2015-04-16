@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DWBubbleMenuButton (1.0.1)
   - FMDB (2.5):
     - FMDB/standard (= 2.5)
   - FMDB/common (2.5)
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.1)
+  - DWBubbleMenuButton (~> 1.0.1)
   - FMDB (~> 2.5)
   - JSONModel (~> 1.0.1)
   - LKDBHelper (HEAD)
@@ -44,12 +46,13 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7.2)
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
-  JSONModel: cbdef0fdff1cc70e913a860861d3072860efd3a1
-  LKDBHelper: 4f2baba1f0abc864f19e36261cd7033e024f30f2
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  DWBubbleMenuButton: 4d9bdbb9d662bdf65c93ceb7fc65901871143d1e
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  LKDBHelper: 64b2c85c6783d453d6db4635a8cfa6c5cc6783ed
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.36.0

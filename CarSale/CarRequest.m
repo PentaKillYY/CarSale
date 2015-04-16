@@ -9,13 +9,13 @@
 #import "CarRequest.h"
 
 @implementation CarRequest
-+(instancetype)sharedHttpRequest{
-    static CarRequest *sharedHttpRequest;
++(instancetype)sharedCarRequest{
+    static CarRequest *sharedCarRequest;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedHttpRequest=[[CarRequest alloc]init];
+        sharedCarRequest=[[CarRequest alloc]init];
     });
-    return sharedHttpRequest;
+    return sharedCarRequest;
 }
 
 -(void)postCarOnCompletion:(JSONResponse)completionBlock onFailure:(JSONResponse)failureBlock
