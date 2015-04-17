@@ -28,6 +28,7 @@
     NSMutableArray *headData;
     NSMutableArray *leftTableData;
     NSMutableArray *rightTableData;
+    CAGradientLayer *_gradientLayer;
 }
 @property(strong,nonatomic)IBOutlet UIView* carColorView;
 @property(strong,nonatomic)IBOutlet UIImageView* carColorBG;
@@ -139,6 +140,16 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.frame = CGRectMake(0.f, 0.f, 25.f, 25.f);
         button.backgroundColor = [UIColor colorWithHexString:hexColor];
+        _gradientLayer = [CAGradientLayer layer];
+        _gradientLayer.bounds = button.bounds;
+        _gradientLayer.borderWidth = 0;
+        _gradientLayer.frame = button.bounds;
+        _gradientLayer.colors = [NSArray arrayWithObjects:
+                                 (id)[[UIColor colorWithHexString:hexColor] CGColor],(id)[[UIColor clearColor] CGColor],nil ];
+        _gradientLayer.startPoint = CGPointMake(0, 0.5);
+        _gradientLayer.endPoint = CGPointMake(0.5, 1.0);
+        
+        [button.layer insertSublayer:_gradientLayer atIndex:0];
         button.layer.cornerRadius = button.frame.size.height / 2.f;
         button.clipsToBounds = YES;
         button.showsTouchWhenHighlighted = YES;

@@ -12,14 +12,20 @@
 #import "SearchFromDBHandler.h"
 #import "SecondMasterTableViewController.h"
 #import "UIView+Shadow.h"
+#import "UpdateHandler.h"
+#import <MBProgressHUD.h>
+#import "URBAlertView.h"
+#import "LaunchViewController.h"
 @interface MasterViewController ()<UITableViewDataSource,UITableViewDelegate,ContentSlected>
 
 @property NSMutableArray *objects;
 @property NSMutableArray* rowOfSectionArr;
 @property NSMutableArray* openedInSectionArr;
-@property (weak,nonatomic)IBOutlet UITableView* tableView;
+@property (strong,nonatomic)IBOutlet UITableView* tableView;
 @property (retain,nonatomic)NSArray* dataAry;
 @property (retain,nonatomic)UILabel* label;
+@property (strong,nonatomic)IBOutlet UIImageView* logoView;
+@property (nonatomic, strong) URBAlertView *alertView;
 @end
 
 @implementation MasterViewController
@@ -33,7 +39,8 @@
     self.rowOfSectionArr = [[NSMutableArray alloc] init];
     self.openedInSectionArr = [[NSMutableArray alloc] init];
     
-   
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(checkDataVersion)];
+    [self.logoView addGestureRecognizer:tap];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 耗时的操作
@@ -65,6 +72,23 @@
     [super viewWillAppear:YES];
     
     self.navigationController.navigationBar.hidden = YES;
+    URBAlertView *alertView = [[URBAlertView alloc] initWithTitle:@"检测到新版本"
+                                                          message:@"是否更新至最新版本"
+                                                cancelButtonTitle:@"取消"
+                                                otherButtonTitles: @"确定", nil];
+    
+    [alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+        if (buttonIndex == 1) {
+            UIStoryboard  * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LaunchViewController* launch = (LaunchViewController *)[storyBoard instantiateViewControllerWithIdentifier:@"Launch"];
+            self.splitViewController.view.window.rootViewController = launch;
+        }
+        [self.alertView hideWithCompletionBlock:^{
+            // stub
+        }];
+    }];
+    
+    self.alertView = alertView;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -177,4 +201,20 @@
     [self.tableView setTableHeaderView:view];
 }
 
+
+-(void)checkDataVersion
+{
+    [[UpdateHandler sharedUpdateHandler] checkDatabaseVersionOnState:^(BOOL isLatest) {
+        if (isLatest) {
+           MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.splitViewController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"已经是最新版本";
+            hud.yOffset = 27.0f;
+            hud.xOffset = 150.f;
+            [hud hide:YES afterDelay:2];
+        }else{
+            [self.alertView showWithAnimation:URBAlertAnimationDefault];
+        }
+    }];
+}
 @end

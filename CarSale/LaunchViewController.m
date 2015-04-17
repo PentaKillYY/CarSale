@@ -20,21 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
-//    [[UpdateHandler sharedUpdateHandler] checkDatabaseVersionOnState:^(BOOL isLatest) {
-//        if (isLatest) {
-//            NSLog(@"是最新版本");
-//        }else{
-//            NSLog(@"需要更新");
-//        }
-//        
-//    }];
+
     [[UpdateHandler sharedUpdateHandler] updateDateBaseDataOnSuccess:^(NSInteger isSuccess) {
         [[DownLoadImageHandler sharedImageHandler] downLoadImageToDiskOnSuccess:^(NSInteger count) {
         allInteger = count;
-            [[NSUserDefaults standardUserDefaults] setValue:@"55" forKey:@"VersionCount"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[VersionRequest sharedVersionRequest] postVersionOnCompletion:^(id json) {
+                NSArray* versionArray = (NSArray*)json;
+                NSString* remoteVersion = [versionArray objectAtIndex:0];
+                [[NSUserDefaults standardUserDefaults] setValue:remoteVersion forKey:@"VersionCount"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            } onFailure:^(id json) {
+                
+            }];
+
         }];
     }];
     

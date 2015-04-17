@@ -13,6 +13,7 @@
 		090F2D371ADCEE0800B148BB /* DXSemiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */; };
 		090F2D381ADCEE0800B148BB /* DXSemiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D341ADCEE0800B148BB /* DXSemiViewController.m */; };
 		090F2D391ADCEE0800B148BB /* DXSemiViewControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */; };
+		0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0984969E1AE0F9E8009000A1 /* URBAlertView.m */; };
 		098C6CBC1AD4BB57008511AA /* TopMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CB81AD4BB57008511AA /* TopMenu.png */; };
 		098C6CBD1AD4BB57008511AA /* MidMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CB91AD4BB57008511AA /* MidMenu@2x.png */; };
 		098C6CBE1AD4BB57008511AA /* MidMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CBA1AD4BB57008511AA /* MidMenu.png */; };
@@ -101,6 +102,8 @@
 		090F2D341ADCEE0800B148BB /* DXSemiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewController.m; sourceTree = "<group>"; };
 		090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewControllerCategory.h; sourceTree = "<group>"; };
 		090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewControllerCategory.m; sourceTree = "<group>"; };
+		0984969D1AE0F9E8009000A1 /* URBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBAlertView.h; sourceTree = "<group>"; };
+		0984969E1AE0F9E8009000A1 /* URBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBAlertView.m; sourceTree = "<group>"; };
 		098C6CB81AD4BB57008511AA /* TopMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopMenu.png; sourceTree = "<group>"; };
 		098C6CB91AD4BB57008511AA /* MidMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MidMenu@2x.png"; sourceTree = "<group>"; };
 		098C6CBA1AD4BB57008511AA /* MidMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MidMenu.png; sourceTree = "<group>"; };
@@ -282,6 +285,15 @@
 				0906D3911AD7743A0079132B /* XCMultiSortTableViewDefault.h */,
 			);
 			name = DetailInfoGrid;
+			sourceTree = "<group>";
+		};
+		0984969C1AE0F9D2009000A1 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				0984969D1AE0F9E8009000A1 /* URBAlertView.h */,
+				0984969E1AE0F9E8009000A1 /* URBAlertView.m */,
+			);
+			name = Master;
 			sourceTree = "<group>";
 		};
 		098C6CC81AD4C029008511AA /* Master */ = {
@@ -471,6 +483,7 @@
 		099B5F101ABA5ECB00DAA888 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0984969C1AE0F9D2009000A1 /* Master */,
 				09C5C1281ADE0D9F0021AB0E /* UIView+Shadow */,
 				0906D3871AD773B70079132B /* MainTable */,
 				0906D38A1AD7741D0079132B /* DetailInfoGrid */,
@@ -747,6 +760,7 @@
 				09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */,
 				098CCF6B1AC4F40700D07E6D /* LaunchViewController.m in Sources */,
 				09F858451AC3AFA00019806F /* CarRequest.m in Sources */,
+				0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */,
 				099B5EE91ABA5E2A00DAA888 /* MasterViewController.m in Sources */,
 				09AF5D3F1ACD47D600BA2BC2 /* SecondMasterTableViewController.m in Sources */,
 				09A2080A1AD62A5400A152F8 /* UIView+Shadow.m in Sources */,

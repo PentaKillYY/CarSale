@@ -149,10 +149,5 @@
     
 }
 
-//-(void)selectDefaultCarFromDataBaseOnSuccess:(Success)success{
-//    [self initializeDataBase];
-//    [carHelper search:[Car class] where:@{@"NumberId":@"0"} orderBy:nil offset:0 count:1000 callback:^(NSMutableArray *array) {
-//        success((NSArray*)array);
-//    }];
-//}
+
 @end
