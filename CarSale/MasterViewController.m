@@ -16,6 +16,7 @@
 #import <MBProgressHUD.h>
 #import "URBAlertView.h"
 #import "LaunchViewController.h"
+#import <AFNetworkReachabilityManager.h>
 @interface MasterViewController ()<UITableViewDataSource,UITableViewDelegate,ContentSlected>
 
 @property NSMutableArray *objects;
@@ -70,7 +71,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     self.navigationController.navigationBar.hidden = YES;
     URBAlertView *alertView = [[URBAlertView alloc] initWithTitle:@"检测到新版本"
                                                           message:@"是否更新至最新版本"
@@ -91,6 +92,12 @@
     self.alertView = alertView;
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"PushToSecond"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -204,17 +211,28 @@
 
 -(void)checkDataVersion
 {
-    [[UpdateHandler sharedUpdateHandler] checkDatabaseVersionOnState:^(BOOL isLatest) {
-        if (isLatest) {
-           MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.splitViewController.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = @"已经是最新版本";
-            hud.yOffset = 27.0f;
-            hud.xOffset = 150.f;
-            [hud hide:YES afterDelay:2];
-        }else{
-            [self.alertView showWithAnimation:URBAlertAnimationDefault];
-        }
-    }];
+    NSInteger networkStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;
+    if (networkStatus <= 0 ) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.splitViewController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"请检查网络连接";
+        hud.yOffset = 27.0f;
+        hud.xOffset = 150.f;
+        [hud hide:YES afterDelay:2];
+    }else{
+        [[UpdateHandler sharedUpdateHandler] checkDatabaseVersionOnState:^(BOOL isLatest) {
+            if (isLatest) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.splitViewController.view animated:YES];
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"已经是最新版本";
+                hud.yOffset = 27.0f;
+                hud.xOffset = 150.f;
+                [hud hide:YES afterDelay:2];
+            }else{
+                [self.alertView showWithAnimation:URBAlertAnimationDefault];
+            }
+        }];
+    }
+    
 }
 @end
