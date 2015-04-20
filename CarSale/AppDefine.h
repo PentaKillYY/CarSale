@@ -9,6 +9,8 @@
 #ifndef CarSale_AppDefine_h
 #define CarSale_AppDefine_h
 
+
+
 #define BaseURLString @"http://121.41.117.51:9090/webservice/"
 #define BaseImageUrl @"http://121.41.117.51:9090/CarImages/car_id_"
 
