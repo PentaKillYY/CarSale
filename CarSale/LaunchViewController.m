@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     [[UpdateHandler sharedUpdateHandler] updateDateBaseDataOnSuccess:^(NSInteger isSuccess) {
         [[DownLoadImageHandler sharedImageHandler] downLoadImageToDiskOnSuccess:^(NSInteger count) {
         allInteger = count;

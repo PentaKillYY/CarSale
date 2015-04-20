@@ -55,15 +55,14 @@
     self.view.frame  = CGRectMake(0, 0, SCREEN_HEIGHT  , SCREEN_WIDTH);
         // 隐藏标签栏
     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor blackColor];
+
     
-     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBarHidden = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.view addGestureRecognizer:tap];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_main"]];
-    self.view.backgroundColor = [UIColor blackColor];
 
     // 添加导航栏退回按钮
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
@@ -73,7 +72,10 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
     [self creatImgShow];
-    
+    self.navigationController.navigationBar.translucent = YES;
+
+    self.navigationController.navigationBarHidden = NO;
+
 }
 
 // 初始化视图
