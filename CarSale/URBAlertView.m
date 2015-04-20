@@ -220,9 +220,13 @@ static CGSize const kURBAlertViewDefaultSize = {280.0, 180.0};
 - (void)setTitleTextAttributes:(NSDictionary *)textAttributes {
 	UIFont *font = [textAttributes objectForKey:NSFontAttributeName];
 	UIColor *textColor = [textAttributes objectForKey:NSForegroundColorAttributeName];
-	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
-	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
-	
+    
+    
+//	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
+//	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
+    NSShadow* shadow = [textAttributes objectForKey:NSShadowAttributeName];
+    UIColor *textShadowColor = shadow.shadowColor;
+    NSValue *shadowOffsetValue = [NSValue valueWithCGSize:shadow.shadowOffset];
 	if (font) {
 		self.titleFont = font;
 	}
@@ -241,9 +245,11 @@ static CGSize const kURBAlertViewDefaultSize = {280.0, 180.0};
 - (void)setMessageTextAttributes:(NSDictionary *)textAttributes {
 	UIFont *font = [textAttributes objectForKey:NSFontAttributeName];
 	UIColor *textColor = [textAttributes objectForKey:NSForegroundColorAttributeName];
-	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
-	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
-	
+//	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
+//	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
+    NSShadow* shadow = [textAttributes objectForKey:NSShadowAttributeName];
+    UIColor *textShadowColor = shadow.shadowColor;
+    NSValue *shadowOffsetValue = [NSValue valueWithCGSize:shadow.shadowOffset];
 	if (font) {
 		self.messageFont = font;
 	}
@@ -268,9 +274,11 @@ static CGSize const kURBAlertViewDefaultSize = {280.0, 180.0};
 - (void)setButtonTextAttributes:(NSDictionary *)textAttributes forState:(UIControlState)state {
 	UIFont *font = [textAttributes objectForKey:NSFontAttributeName];
 	UIColor *textColor = [textAttributes objectForKey:NSForegroundColorAttributeName];
-	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
-	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
-	
+//	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
+//	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
+    NSShadow* shadow = [textAttributes objectForKey:NSShadowAttributeName];
+    UIColor *textShadowColor = shadow.shadowColor;
+    NSValue *shadowOffsetValue = [NSValue valueWithCGSize:shadow.shadowOffset];
 	[self.buttons enumerateObjectsUsingBlock:^(URBAlertViewButton *button, NSUInteger idx, BOOL *stop) {
 		if (font) {
 			button.titleLabel.font = font;
@@ -295,9 +303,12 @@ static CGSize const kURBAlertViewDefaultSize = {280.0, 180.0};
 	if (self.cancelButton) {
 		UIFont *font = [textAttributes objectForKey:NSFontAttributeName];
 		UIColor *textColor = [textAttributes objectForKey:NSForegroundColorAttributeName];
-		UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
-		NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
-		
+//		UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
+//		NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
+        NSShadow* shadow = [textAttributes objectForKey:NSShadowAttributeName];
+        UIColor *textShadowColor = shadow.shadowColor;
+        NSValue *shadowOffsetValue = [NSValue valueWithCGSize:shadow.shadowOffset];
+        
 		if (font) {
 			self.cancelButton.titleLabel.font = font;
 		}
@@ -320,9 +331,12 @@ static CGSize const kURBAlertViewDefaultSize = {280.0, 180.0};
 - (void)setTextAttributes:(NSDictionary *)textAttributes forLabel:(UILabel *)label {
 	UIFont *font = [textAttributes objectForKey:NSFontAttributeName];
 	UIColor *textColor = [textAttributes objectForKey:NSForegroundColorAttributeName];
-	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
-	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
-	
+//	UIColor *textShadowColor = [textAttributes objectForKey:UITextAttributeTextShadowColor];
+//	NSValue *shadowOffsetValue = [textAttributes objectForKey:UITextAttributeTextShadowOffset];
+    NSShadow* shadow = [textAttributes objectForKey:NSShadowAttributeName];
+    UIColor *textShadowColor = shadow.shadowColor;
+    NSValue *shadowOffsetValue = [NSValue valueWithCGSize:shadow.shadowOffset];
+    
 	if (font) {
 		label.font = font;
 	}
