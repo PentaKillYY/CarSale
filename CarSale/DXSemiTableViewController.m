@@ -78,8 +78,7 @@
     NSInteger baseRows = ceilf(CGRectGetHeight(self.semiTableView.bounds) / self.tableViewRowHeight) - 1;
     
     CGFloat delay = indexPath.row <= baseRows ? 0.05f * indexPath.row : 0.01f;
-    
-    switch (self.direction) {
+         switch (self.direction) {
         case SemiViewControllerDirectionRight: {
             cell.contentView.layer.transform = CATransform3DMakeRotation(90.0f, 0, 1, 0);
             cell.contentView.layer.anchorPoint = CGPointMake(1, 0.5);
