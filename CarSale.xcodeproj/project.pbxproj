@@ -10,7 +10,6 @@
 		0906D3921AD7743A0079132B /* UIView+XCMultiSortTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D38C1AD7743A0079132B /* UIView+XCMultiSortTableView.m */; };
 		0906D3931AD7743A0079132B /* XCMultiSortTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D38E1AD7743A0079132B /* XCMultiSortTableView.m */; };
 		0906D3941AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D3901AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m */; };
-		090F2D371ADCEE0800B148BB /* DXSemiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */; };
 		090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D341ADCEE0800B148BB /* DXImageViewController.m */; };
 		090F2D391ADCEE0800B148BB /* DXSemiViewControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */; };
 		0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0984969E1AE0F9E8009000A1 /* URBAlertView.m */; };
@@ -71,7 +70,9 @@
 		09BC70D21ADBB4AB0085B4DE /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BC70D11ADBB4AB0085B4DE /* UIColor+HexColor.m */; };
 		09C5C1241ADDF3E70021AB0E /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C5C1231ADDF3E70021AB0E /* ImageGalleryCell.xib */; };
 		09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5C1261ADDF6690021AB0E /* ImageGalleryCell.m */; };
-		09C8AFEF1AE61450001B2948 /* DXSemiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */; };
+		09C8AFEF1AE61450001B2948 /* DXMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8AFEE1AE61450001B2948 /* DXMasterViewController.m */; };
+		09E24FFC1AE63D1D004D4A26 /* DXMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09E24FFA1AE63D1D004D4A26 /* DXMenu@2x.png */; };
+		09E24FFD1AE63D1D004D4A26 /* DXMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 09E24FFB1AE63D1D004D4A26 /* DXMenu.png */; };
 		09F8583F1AC39B220019806F /* BaseHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8583E1AC39B220019806F /* BaseHttpRequest.m */; };
 		09F858421AC3A14C0019806F /* MenuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858411AC3A14C0019806F /* MenuRequest.m */; };
 		09F858451AC3AFA00019806F /* CarRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858441AC3AFA00019806F /* CarRequest.m */; };
@@ -97,8 +98,6 @@
 		0906D38F1AD7743A0079132B /* XCMultiSortTableViewBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCMultiSortTableViewBGScrollView.h; sourceTree = "<group>"; };
 		0906D3901AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCMultiSortTableViewBGScrollView.m; sourceTree = "<group>"; };
 		0906D3911AD7743A0079132B /* XCMultiSortTableViewDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCMultiSortTableViewDefault.h; sourceTree = "<group>"; };
-		090F2D311ADCEE0800B148BB /* DXSemiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiTableViewController.h; sourceTree = "<group>"; };
-		090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiTableViewController.m; sourceTree = "<group>"; };
 		090F2D331ADCEE0800B148BB /* DXImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXImageViewController.h; sourceTree = "<group>"; };
 		090F2D341ADCEE0800B148BB /* DXImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXImageViewController.m; sourceTree = "<group>"; };
 		090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewControllerCategory.h; sourceTree = "<group>"; };
@@ -189,11 +188,13 @@
 		09C5C1231ADDF3E70021AB0E /* ImageGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGalleryCell.xib; sourceTree = "<group>"; };
 		09C5C1251ADDF6690021AB0E /* ImageGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryCell.h; sourceTree = "<group>"; };
 		09C5C1261ADDF6690021AB0E /* ImageGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryCell.m; sourceTree = "<group>"; };
-		09C8AFED1AE61450001B2948 /* DXSemiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewController.h; sourceTree = "<group>"; };
-		09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewController.m; sourceTree = "<group>"; };
+		09C8AFED1AE61450001B2948 /* DXMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXMasterViewController.h; sourceTree = "<group>"; };
+		09C8AFEE1AE61450001B2948 /* DXMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXMasterViewController.m; sourceTree = "<group>"; };
 		09DBBA9F1AC2992A007BDC34 /* AppMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMarco.h; sourceTree = "<group>"; };
 		09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMarco.h; sourceTree = "<group>"; };
 		09DBBAA21AC29CE2007BDC34 /* AppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
+		09E24FFA1AE63D1D004D4A26 /* DXMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DXMenu@2x.png"; sourceTree = "<group>"; };
+		09E24FFB1AE63D1D004D4A26 /* DXMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DXMenu.png; sourceTree = "<group>"; };
 		09F8583D1AC39B220019806F /* BaseHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHttpRequest.h; sourceTree = "<group>"; };
 		09F8583E1AC39B220019806F /* BaseHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHttpRequest.m; sourceTree = "<group>"; };
 		09F858401AC3A14C0019806F /* MenuRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuRequest.h; sourceTree = "<group>"; };
@@ -268,10 +269,6 @@
 				09A208031AD6119300A152F8 /* ImgShowViewController.m */,
 				09A208041AD6119300A152F8 /* MRImgShowView.h */,
 				09A208051AD6119300A152F8 /* MRImgShowView.m */,
-				09C8AFED1AE61450001B2948 /* DXSemiViewController.h */,
-				09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */,
-				090F2D311ADCEE0800B148BB /* DXSemiTableViewController.h */,
-				090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */,
 				090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */,
 				090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */,
 			);
@@ -304,6 +301,8 @@
 		098C6CC81AD4C029008511AA /* Master */ = {
 			isa = PBXGroup;
 			children = (
+				09E24FFA1AE63D1D004D4A26 /* DXMenu@2x.png */,
+				09E24FFB1AE63D1D004D4A26 /* DXMenu.png */,
 				098C6CE81AD52503008511AA /* MenuSelected.png */,
 				098C6CE91AD52503008511AA /* MenuSelected@2x.png */,
 				09AF5D441AD3793500BA2BC2 /* logo@2x.png */,
@@ -446,6 +445,8 @@
 			children = (
 				099B5EE71ABA5E2A00DAA888 /* MasterViewController.h */,
 				099B5EE81ABA5E2A00DAA888 /* MasterViewController.m */,
+				09C8AFED1AE61450001B2948 /* DXMasterViewController.h */,
+				09C8AFEE1AE61450001B2948 /* DXMasterViewController.m */,
 				09AF5D3D1ACD47D600BA2BC2 /* SecondMasterTableViewController.h */,
 				09AF5D3E1ACD47D600BA2BC2 /* SecondMasterTableViewController.m */,
 			);
@@ -687,10 +688,12 @@
 				098C6CC61AD4BE12008511AA /* MidMenuSelected.png in Resources */,
 				09C5C1241ADDF3E70021AB0E /* ImageGalleryCell.xib in Resources */,
 				098C6CBD1AD4BB57008511AA /* MidMenu@2x.png in Resources */,
+				09E24FFD1AE63D1D004D4A26 /* DXMenu.png in Resources */,
 				098C6CC71AD4BE12008511AA /* MidMenuSelected@2x.png in Resources */,
 				09AF5CF91ACB9EC100BA2BC2 /* MainSectionView.xib in Resources */,
 				099B5EF11ABA5E2A00DAA888 /* Images.xcassets in Resources */,
 				098C6CCE1AD4C054008511AA /* style@2x.png in Resources */,
+				09E24FFC1AE63D1D004D4A26 /* DXMenu@2x.png in Resources */,
 				098C6CBF1AD4BB57008511AA /* TopMenu@2x.png in Resources */,
 				098C6CD61AD4C153008511AA /* priceselected@2x.png in Resources */,
 			);
@@ -758,14 +761,13 @@
 				09A208061AD6119300A152F8 /* ImgShowViewController.m in Sources */,
 				09AF81241AC9280F006CBF63 /* Car.m in Sources */,
 				09AF5CF71ACB9E8B00BA2BC2 /* MainSectionview.m in Sources */,
-				090F2D371ADCEE0800B148BB /* DXSemiTableViewController.m in Sources */,
 				09AF81211AC92528006CBF63 /* DataBaseHelper.m in Sources */,
 				090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */,
 				098C6CDF1AD4FEB5008511AA /* RecipeCollectionHeaderView.m in Sources */,
 				09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */,
 				098CCF6B1AC4F40700D07E6D /* LaunchViewController.m in Sources */,
 				09F858451AC3AFA00019806F /* CarRequest.m in Sources */,
-				09C8AFEF1AE61450001B2948 /* DXSemiViewController.m in Sources */,
+				09C8AFEF1AE61450001B2948 /* DXMasterViewController.m in Sources */,
 				0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */,
 				099B5EE91ABA5E2A00DAA888 /* MasterViewController.m in Sources */,
 				09AF5D3F1ACD47D600BA2BC2 /* SecondMasterTableViewController.m in Sources */,
