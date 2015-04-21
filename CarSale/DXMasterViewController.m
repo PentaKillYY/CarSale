@@ -20,8 +20,6 @@
         _detailItem = newDetailItem;
         // Update the view.
         [self configureView];
-        
-        
     }
 }
 
@@ -127,14 +125,13 @@
 
 #pragma TableViewdataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     // Return the number of rows in the section.
     NSLog(@"%d",self.dataSourceArray.count);
+    
     if (self.dataSourceArray) {
         return self.dataSourceArray.count;
     }
     return 0;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -185,6 +182,11 @@
         sectionView.label.text = [_detailItem description];
         return (UITableViewHeaderFooterView*)sectionView;
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
 }
 
 - (void)setExtraCellLineHidden{
