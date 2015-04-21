@@ -7,7 +7,7 @@
 //
 
 #import "DXSemiViewControllerCategory.h"
-#import "DXSemiViewController.h"
+#import "DXImageViewController.h"
 
 @implementation UIViewController (SemiViewController)
 
@@ -15,17 +15,17 @@
 @dynamic rightSemiViewController;
 
 
-- (void)setLeftSemiViewController:(DXSemiViewController *)semiLeftVC Title:(id)caritem
+- (void)setLeftSemiViewController:(DXImageViewController *)semiLeftVC Title:(id)caritem
 {
     [self setSemiViewController:semiLeftVC withDirection:SemiViewControllerDirectionLeft Title:caritem];
 }
 
-- (void)setRightSemiViewController:(DXSemiViewController *)semiRightVC Title:(id)caritem
+- (void)setRightSemiViewController:(DXImageViewController *)semiRightVC Title:(id)caritem
 {
     [self setSemiViewController:semiRightVC withDirection:SemiViewControllerDirectionRight Title:caritem];
 }
 
-- (void)setSemiViewController:(DXSemiViewController *)semiVC withDirection:(SemiViewControllerDirection)direction Title:(id)caritem
+- (void)setSemiViewController:(DXImageViewController *)semiVC withDirection:(SemiViewControllerDirection)direction Title:(id)caritem
 {
     semiVC.direction = direction;
     CGRect selfFrame = self.view.bounds;

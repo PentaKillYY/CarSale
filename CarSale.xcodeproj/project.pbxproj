@@ -11,7 +11,7 @@
 		0906D3931AD7743A0079132B /* XCMultiSortTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D38E1AD7743A0079132B /* XCMultiSortTableView.m */; };
 		0906D3941AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D3901AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m */; };
 		090F2D371ADCEE0800B148BB /* DXSemiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */; };
-		090F2D381ADCEE0800B148BB /* DXSemiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D341ADCEE0800B148BB /* DXSemiViewController.m */; };
+		090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D341ADCEE0800B148BB /* DXImageViewController.m */; };
 		090F2D391ADCEE0800B148BB /* DXSemiViewControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */; };
 		0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0984969E1AE0F9E8009000A1 /* URBAlertView.m */; };
 		098C6CBC1AD4BB57008511AA /* TopMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CB81AD4BB57008511AA /* TopMenu.png */; };
@@ -71,6 +71,7 @@
 		09BC70D21ADBB4AB0085B4DE /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BC70D11ADBB4AB0085B4DE /* UIColor+HexColor.m */; };
 		09C5C1241ADDF3E70021AB0E /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C5C1231ADDF3E70021AB0E /* ImageGalleryCell.xib */; };
 		09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5C1261ADDF6690021AB0E /* ImageGalleryCell.m */; };
+		09C8AFEF1AE61450001B2948 /* DXSemiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */; };
 		09F8583F1AC39B220019806F /* BaseHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8583E1AC39B220019806F /* BaseHttpRequest.m */; };
 		09F858421AC3A14C0019806F /* MenuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858411AC3A14C0019806F /* MenuRequest.m */; };
 		09F858451AC3AFA00019806F /* CarRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F858441AC3AFA00019806F /* CarRequest.m */; };
@@ -98,8 +99,8 @@
 		0906D3911AD7743A0079132B /* XCMultiSortTableViewDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCMultiSortTableViewDefault.h; sourceTree = "<group>"; };
 		090F2D311ADCEE0800B148BB /* DXSemiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiTableViewController.h; sourceTree = "<group>"; };
 		090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiTableViewController.m; sourceTree = "<group>"; };
-		090F2D331ADCEE0800B148BB /* DXSemiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewController.h; sourceTree = "<group>"; };
-		090F2D341ADCEE0800B148BB /* DXSemiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewController.m; sourceTree = "<group>"; };
+		090F2D331ADCEE0800B148BB /* DXImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXImageViewController.h; sourceTree = "<group>"; };
+		090F2D341ADCEE0800B148BB /* DXImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXImageViewController.m; sourceTree = "<group>"; };
 		090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewControllerCategory.h; sourceTree = "<group>"; };
 		090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewControllerCategory.m; sourceTree = "<group>"; };
 		0984969D1AE0F9E8009000A1 /* URBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBAlertView.h; sourceTree = "<group>"; };
@@ -188,6 +189,8 @@
 		09C5C1231ADDF3E70021AB0E /* ImageGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageGalleryCell.xib; sourceTree = "<group>"; };
 		09C5C1251ADDF6690021AB0E /* ImageGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGalleryCell.h; sourceTree = "<group>"; };
 		09C5C1261ADDF6690021AB0E /* ImageGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryCell.m; sourceTree = "<group>"; };
+		09C8AFED1AE61450001B2948 /* DXSemiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewController.h; sourceTree = "<group>"; };
+		09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewController.m; sourceTree = "<group>"; };
 		09DBBA9F1AC2992A007BDC34 /* AppMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMarco.h; sourceTree = "<group>"; };
 		09DBBAA01AC2992A007BDC34 /* UtilsMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMarco.h; sourceTree = "<group>"; };
 		09DBBAA21AC29CE2007BDC34 /* AppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
@@ -244,8 +247,8 @@
 		0906D3881AD773CD0079132B /* DetailImageCollection */ = {
 			isa = PBXGroup;
 			children = (
-				090F2D331ADCEE0800B148BB /* DXSemiViewController.h */,
-				090F2D341ADCEE0800B148BB /* DXSemiViewController.m */,
+				090F2D331ADCEE0800B148BB /* DXImageViewController.h */,
+				090F2D341ADCEE0800B148BB /* DXImageViewController.m */,
 				099BF0CF1ADF5CD200E9AE58 /* AllCollectionReusableView.h */,
 				099BF0D01ADF5CD200E9AE58 /* AllCollectionReusableView.m */,
 				098C6CDD1AD4FEB5008511AA /* RecipeCollectionHeaderView.h */,
@@ -265,6 +268,8 @@
 				09A208031AD6119300A152F8 /* ImgShowViewController.m */,
 				09A208041AD6119300A152F8 /* MRImgShowView.h */,
 				09A208051AD6119300A152F8 /* MRImgShowView.m */,
+				09C8AFED1AE61450001B2948 /* DXSemiViewController.h */,
+				09C8AFEE1AE61450001B2948 /* DXSemiViewController.m */,
 				090F2D311ADCEE0800B148BB /* DXSemiTableViewController.h */,
 				090F2D321ADCEE0800B148BB /* DXSemiTableViewController.m */,
 				090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */,
@@ -755,11 +760,12 @@
 				09AF5CF71ACB9E8B00BA2BC2 /* MainSectionview.m in Sources */,
 				090F2D371ADCEE0800B148BB /* DXSemiTableViewController.m in Sources */,
 				09AF81211AC92528006CBF63 /* DataBaseHelper.m in Sources */,
-				090F2D381ADCEE0800B148BB /* DXSemiViewController.m in Sources */,
+				090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */,
 				098C6CDF1AD4FEB5008511AA /* RecipeCollectionHeaderView.m in Sources */,
 				09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */,
 				098CCF6B1AC4F40700D07E6D /* LaunchViewController.m in Sources */,
 				09F858451AC3AFA00019806F /* CarRequest.m in Sources */,
+				09C8AFEF1AE61450001B2948 /* DXSemiViewController.m in Sources */,
 				0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */,
 				099B5EE91ABA5E2A00DAA888 /* MasterViewController.m in Sources */,
 				09AF5D3F1ACD47D600BA2BC2 /* SecondMasterTableViewController.m in Sources */,

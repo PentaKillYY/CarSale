@@ -427,7 +427,7 @@
 -(void)shouldShowAllImageView:(id)sender
 {
     UIButton* button = (UIButton*)sender;
-    DXSemiViewController* semiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXSemi"];
+    DXImageViewController* semiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXSemi"];
     NSDictionary* cardic = @{@"sectionNumber":[NSString stringWithFormat:@"%d",button.tag],@"carid":carId,@"imageArray":self.imageArray,@"titlename":[NSString stringWithFormat:@"%@    %ld 张",kImageCategory[button.tag],(unsigned long)[[self.imageArray objectAtIndex:button.tag] count]]};
     [self setRightSemiViewController:semiViewController Title:cardic];
 }

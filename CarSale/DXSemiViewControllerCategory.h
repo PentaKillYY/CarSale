@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class DXSemiViewController;
+@class DXImageViewController;
 
 @interface UIViewController (SemiViewController)
 
-@property (nonatomic, strong) DXSemiViewController *leftSemiViewController;
-@property (nonatomic, strong) DXSemiViewController *rightSemiViewController;
+@property (nonatomic, strong) DXImageViewController *leftSemiViewController;
+@property (nonatomic, strong) DXImageViewController *rightSemiViewController;
 
-- (void)setRightSemiViewController:(DXSemiViewController *)semiRightVC Title:(id)caritem;
-- (void)setLeftSemiViewController:(DXSemiViewController *)semiLeftVC Title:(id)caritem;
+- (void)setRightSemiViewController:(DXImageViewController *)semiRightVC Title:(id)caritem;
+- (void)setLeftSemiViewController:(DXImageViewController *)semiLeftVC Title:(id)caritem;
 @end

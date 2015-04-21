@@ -13,15 +13,17 @@ typedef enum {
     SemiViewControllerDirectionRight,
 }SemiViewControllerDirection;
 
-@interface DXSemiViewController : UIViewController
+@interface DXImageViewController : UIViewController
 
 @property (nonatomic, assign) SemiViewControllerDirection direction;
 @property (nonatomic, assign) CGFloat sideAnimationDuration;
 @property (nonatomic, assign) CGFloat sideOffset;
 
-@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, strong) IBOutlet UICollectionView* collectionView;
 
-
+@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) NSDictionary* carDic;
 - (void)dismissSemi:(id)sender;
 
 @end

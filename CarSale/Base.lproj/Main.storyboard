@@ -117,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6L-g8-plA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="-718"/>
+            <point key="canvasLocation" x="558" y="-734"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -239,10 +239,10 @@
             </objects>
             <point key="canvasLocation" x="832" y="-2008"/>
         </scene>
-        <!--Semi View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="U8N-La-sZ8">
             <objects>
-                <viewController storyboardIdentifier="DXSemi" id="40I-4j-5Yl" customClass="DXSemiViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DXSemi" id="40I-4j-5Yl" customClass="DXImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4wf-r7-eGT"/>
                         <viewControllerLayoutGuide type="bottom" id="vhd-CY-4sB"/>
@@ -402,6 +402,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="3NM-er-TRX"/>
     </inferredMetricsTieBreakers>
 </document>
