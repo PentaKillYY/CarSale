@@ -14,6 +14,8 @@
 #define BaseURLString @"http://121.41.117.51:9090/webservice/"
 #define BaseImageUrl @"http://121.41.117.51:9090/CarImages/car_id_"
 
+#define kParameterTable @"GetParameterTable"
+#define kParameterMenuTable @"GetParameterMenuTable"
 
 #define kMenuTable @"GetMenuTable"
 #define kVersion @"GetVersion"
@@ -63,4 +65,6 @@
 #define kImageCategory @[@"车头",@"车尾",@"细节",@"内饰"]
 
 #define kCarInfoCategory @[@"级别",@"长宽高",@"最高车速",@"官方0-100加速",@"工信部综合油耗",@"轴距",@"进气形式",@"汽缸排列形式",@"汽缸数",@"压缩比",@"最大马力",@"发动机",@"最大功率",@"最大扭矩",@"燃料形式",@"燃油标号",@"变速简称",@"档位个数",@"变速箱类型",@"前悬架类型",@"后悬架类型",@"主副驾驶座安全气囊",@"前后排侧气囊",@"abs防抱死",@"电动天窗",@"真皮仿皮座椅",@"座椅高低调节"]
+
+
 #endif
