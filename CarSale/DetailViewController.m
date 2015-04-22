@@ -60,27 +60,32 @@
         carId = [[NSString alloc] init];
         self.imageArray = [[NSMutableArray alloc] init];
 
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.yOffset = 27;
+//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.yOffset = 27;
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // 耗时的操作
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:[self.detailItem description] OnSuccess:^(NSArray *array) {
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
 //                [self prepareCarInfoDataSource];
 //                [self prepareCarImageDataSource:0];
-            }];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // 更新界面
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self setMainCarImageView:0];
+                    [self setColorSelectedView];
+                });
+            }];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+                // 更新界面
+//                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
 //                [self setCarInfoGridView];
-                [self setMainCarImageView:0];
-                [self setColorSelectedView];
+//                [self setMainCarImageView:0];
+//                [self setColorSelectedView];
 //                [self setCarImageSectionView];
-            });
-        });
+//            });
+//        });
     }
 }
 
@@ -102,13 +107,13 @@
     UILabel *homeLabel = [self createHomeButtonView];
     
     DWBubbleMenuButton *downMenuButton = [[DWBubbleMenuButton alloc] initWithFrame:CGRectMake(10.f,
-                                                                                              25.f,
+                                                                                              105.f,
                                                                                               homeLabel.frame.size.width,
                                                                                               homeLabel.frame.size.height)
                                                                 expansionDirection:DirectionRight];
     downMenuButton.homeButtonView = homeLabel;
+        [downMenuButton addButtons:[self createDemoButtonArray]];
     
-    [downMenuButton addButtons:[self createDemoButtonArray]];
     
     [self.view addSubview:downMenuButton];
 
@@ -123,6 +128,7 @@
     label.layer.cornerRadius = label.frame.size.height / 2.f;
     label.backgroundColor =[UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.5f];
     label.clipsToBounds = YES;
+    
     
     return label;
 }
@@ -151,6 +157,11 @@
         _gradientLayer.endPoint = CGPointMake(0.5, 1.0);
         
         [button.layer insertSublayer:_gradientLayer atIndex:0];
+        [button.layer setBorderWidth:2.0];
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 1 , 1, 1 });
+        [button.layer setBorderColor:colorref];
+
         button.layer.cornerRadius = button.frame.size.height / 2.f;
         button.clipsToBounds = YES;
         button.showsTouchWhenHighlighted = YES;
@@ -195,6 +206,7 @@
         [completeurl appendString:kImageFloder[4]];
         [completeurl appendString:@"/"];
         [completeurl appendString:[[NSString seperateStringToArray:car.mainImageUrl] objectAtIndex:colorIndex]];
+        NSLog(@"%@",completeurl);
         [self.mainCarImg sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 }
