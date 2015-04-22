@@ -66,6 +66,10 @@
 		09AF5D471AD3793500BA2BC2 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 09AF5D451AD3793500BA2BC2 /* logo.png */; };
 		09AF81211AC92528006CBF63 /* DataBaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AF81201AC92528006CBF63 /* DataBaseHelper.m */; };
 		09AF81241AC9280F006CBF63 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AF81231AC9280F006CBF63 /* Car.m */; };
+		09B16C1D1AE7841E00B61BE7 /* CarParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B16C1C1AE7841E00B61BE7 /* CarParameter.m */; };
+		09B16C201AE7846400B61BE7 /* ParameterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B16C1F1AE7846400B61BE7 /* ParameterMenu.m */; };
+		09B16C231AE7866100B61BE7 /* CarParameterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B16C221AE7866100B61BE7 /* CarParameterRequest.m */; };
+		09B16C261AE7868200B61BE7 /* ParameterMenuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B16C251AE7868200B61BE7 /* ParameterMenuRequest.m */; };
 		09BC70CF1ADB6E090085B4DE /* UILabel+CalculateSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BC70CE1ADB6E090085B4DE /* UILabel+CalculateSize.m */; };
 		09BC70D21ADBB4AB0085B4DE /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BC70D11ADBB4AB0085B4DE /* UIColor+HexColor.m */; };
 		09C5C1241ADDF3E70021AB0E /* ImageGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C5C1231ADDF3E70021AB0E /* ImageGalleryCell.xib */; };
@@ -181,6 +185,14 @@
 		09AF81201AC92528006CBF63 /* DataBaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseHelper.m; sourceTree = "<group>"; };
 		09AF81221AC9280F006CBF63 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		09AF81231AC9280F006CBF63 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		09B16C1B1AE7841E00B61BE7 /* CarParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarParameter.h; sourceTree = "<group>"; };
+		09B16C1C1AE7841E00B61BE7 /* CarParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarParameter.m; sourceTree = "<group>"; };
+		09B16C1E1AE7846400B61BE7 /* ParameterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterMenu.h; sourceTree = "<group>"; };
+		09B16C1F1AE7846400B61BE7 /* ParameterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterMenu.m; sourceTree = "<group>"; };
+		09B16C211AE7866100B61BE7 /* CarParameterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarParameterRequest.h; sourceTree = "<group>"; };
+		09B16C221AE7866100B61BE7 /* CarParameterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarParameterRequest.m; sourceTree = "<group>"; };
+		09B16C241AE7868200B61BE7 /* ParameterMenuRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterMenuRequest.h; sourceTree = "<group>"; };
+		09B16C251AE7868200B61BE7 /* ParameterMenuRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterMenuRequest.m; sourceTree = "<group>"; };
 		09BC70CD1ADB6E090085B4DE /* UILabel+CalculateSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CalculateSize.h"; sourceTree = "<group>"; };
 		09BC70CE1ADB6E090085B4DE /* UILabel+CalculateSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CalculateSize.m"; sourceTree = "<group>"; };
 		09BC70D01ADBB4AB0085B4DE /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
@@ -482,6 +494,10 @@
 				09F858471AC3D78B0019806F /* Menu.m */,
 				09AF81221AC9280F006CBF63 /* Car.h */,
 				09AF81231AC9280F006CBF63 /* Car.m */,
+				09B16C1B1AE7841E00B61BE7 /* CarParameter.h */,
+				09B16C1C1AE7841E00B61BE7 /* CarParameter.m */,
+				09B16C1E1AE7846400B61BE7 /* ParameterMenu.h */,
+				09B16C1F1AE7846400B61BE7 /* ParameterMenu.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -506,6 +522,10 @@
 				09F858411AC3A14C0019806F /* MenuRequest.m */,
 				09F858431AC3AFA00019806F /* CarRequest.h */,
 				09F858441AC3AFA00019806F /* CarRequest.m */,
+				09B16C211AE7866100B61BE7 /* CarParameterRequest.h */,
+				09B16C221AE7866100B61BE7 /* CarParameterRequest.m */,
+				09B16C241AE7868200B61BE7 /* ParameterMenuRequest.h */,
+				09B16C251AE7868200B61BE7 /* ParameterMenuRequest.m */,
 				098CCF711AC53ABC00D07E6D /* VersionRequest.h */,
 				098CCF721AC53ABC00D07E6D /* VersionRequest.m */,
 				0996796E1ACA9105004B7121 /* ImageDownLoad.h */,
@@ -750,15 +770,18 @@
 				099B5EE61ABA5E2A00DAA888 /* AppDelegate.m in Sources */,
 				09BC70D21ADBB4AB0085B4DE /* UIColor+HexColor.m in Sources */,
 				098CCF701AC52D3400D07E6D /* UpdateHandler.m in Sources */,
+				09B16C231AE7866100B61BE7 /* CarParameterRequest.m in Sources */,
 				0996796C1ACA797C004B7121 /* DownLoadImageHandler.m in Sources */,
 				09F8583F1AC39B220019806F /* BaseHttpRequest.m in Sources */,
 				09BC70CF1ADB6E090085B4DE /* UILabel+CalculateSize.m in Sources */,
 				099679701ACA9105004B7121 /* ImageDownLoad.m in Sources */,
+				09B16C1D1AE7841E00B61BE7 /* CarParameter.m in Sources */,
 				0906D3941AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m in Sources */,
 				099BF0D11ADF5CD200E9AE58 /* AllCollectionReusableView.m in Sources */,
 				098CCF731AC53ABC00D07E6D /* VersionRequest.m in Sources */,
 				09AF5D361ACBF28500BA2BC2 /* SearchFromDBHandler.m in Sources */,
 				09A208061AD6119300A152F8 /* ImgShowViewController.m in Sources */,
+				09B16C261AE7868200B61BE7 /* ParameterMenuRequest.m in Sources */,
 				09AF81241AC9280F006CBF63 /* Car.m in Sources */,
 				09AF5CF71ACB9E8B00BA2BC2 /* MainSectionview.m in Sources */,
 				09AF81211AC92528006CBF63 /* DataBaseHelper.m in Sources */,
@@ -770,6 +793,7 @@
 				09C8AFEF1AE61450001B2948 /* DXMasterViewController.m in Sources */,
 				0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */,
 				099B5EE91ABA5E2A00DAA888 /* MasterViewController.m in Sources */,
+				09B16C201AE7846400B61BE7 /* ParameterMenu.m in Sources */,
 				09AF5D3F1ACD47D600BA2BC2 /* SecondMasterTableViewController.m in Sources */,
 				09A2080A1AD62A5400A152F8 /* UIView+Shadow.m in Sources */,
 				099B5EE31ABA5E2A00DAA888 /* main.m in Sources */,

@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6L-g8-plA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="214"/>
+            <point key="canvasLocation" x="-416" y="294"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="STA-OS-Akj">
@@ -161,6 +161,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGh-Xg-ADj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="408" y="-729"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lon-Ex-AKb">
+            <objects>
+                <viewController id="XLm-nz-XIh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="si4-mB-Tdf"/>
+                        <viewControllerLayoutGuide type="bottom" id="rW1-Wh-cDj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Exy-aN-GmF">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1F-cl-Xkk">
+                                <rect key="frame" x="0.0" y="0.0" width="704" height="250"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XuA-nb-f8k">
+                                        <rect key="frame" x="23" y="82" width="658" height="141"/>
+                                    </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="H72-1d-97p">
+                                        <rect key="frame" x="0.0" y="20" width="704" height="250"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOA-Xu-Xp8">
+                                <rect key="frame" x="0.0" y="250" width="703" height="518"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.png" highlightedImage="infoSelected.png" translatesAutoresizingMaskIntoConstraints="NO" id="7JL-dz-z7H">
+                                        <rect key="frame" x="0.0" y="0.0" width="703" height="70"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1KK-oq-qP0"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FKh-zN-DeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579.5" y="-2008"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -280,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832" y="-2008"/>
+            <point key="canvasLocation" x="724" y="-2980"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="U8N-La-sZ8">
@@ -368,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRX-G0-cSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="-2008"/>
+            <point key="canvasLocation" x="1720" y="-2820"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -425,7 +468,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
+                        <segue destination="XLm-nz-XIh" kind="relationship" relationship="rootViewController" id="f7q-Fv-7lM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
