@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Menu.h"
 #import "Car.h"
+#import "CarParameter.h"
+#import "ParameterMenu.h"
 #import "LKDBHelper.h"
 #import "AppDefine.h"
 
@@ -22,9 +24,10 @@ typedef void(^SuccessDic)(NSDictionary* dictionary);
 -(void)cleanTabledata;
 -(void)saveMenuData:(NSArray*)dataArray;
 -(void)saveCarData:(NSArray*)dataArray;
+-(void)saveCarParameterData:(NSArray*)dataArray;
+-(void)saveParameterMenuData:(NSArray*)dataArray;
 -(void)selectAllImageFromDatabaseOnSuccess:(Success)success;
 -(void)selectMenuFromDatabaseOnSuccess:(Success)success;
 -(void)selectCarNameFromDataBaseWhere:(NSString*)menuText OnSuccess:(Success)success;
 -(void)selectCarFromDataBaseWhere:(NSString*)menuText OnSuccess:(Success)success;
-//-(void)selectDefaultCarFromDataBaseOnSuccess:(Success)success;
 @end

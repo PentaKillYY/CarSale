@@ -10,6 +10,8 @@
 @interface DataBaseHelper(){
     LKDBHelper* menuHelper;
     LKDBHelper* carHelper;
+    LKDBHelper* carParameterHelper;
+    LKDBHelper* parameterMenuHelper;
 }
 @end
 
@@ -26,21 +28,29 @@
 -(void)initializeDataBase{
     menuHelper = [Menu getUsingLKDBHelper];
     carHelper = [Car getUsingLKDBHelper];
+    carParameterHelper = [CarParameter getUsingLKDBHelper];
+    parameterMenuHelper = [ParameterMenu getUsingLKDBHelper];
 }
 
 -(void)createTable{
     [Menu getCreateMenuTableSQL];
     [Car getCreateCarTableSQL];
+    [CarParameter getCreateCarParameterTableSQL];
+    [ParameterMenu getCreateParameterMenuTableSQL];
 }
 
 -(void)dropTable{
     [menuHelper dropAllTable];
     [carHelper dropAllTable];
+    [carParameterHelper dropAllTable];
+    [parameterMenuHelper dropAllTable];
 }
 
 -(void)cleanTabledata{
     [LKDBHelper clearTableData:[Menu class]];
     [LKDBHelper clearTableData:[Car class]];
+    [LKDBHelper clearTableData:[CarParameter class]];
+    [LKDBHelper clearTableData:[ParameterMenu class]];
 }
 
 -(void)saveMenuData:(NSArray*)dataArray{
@@ -95,6 +105,27 @@
         car.mainImageUrl = [[dataArray objectAtIndex:j] objectForKey:kMainImage];
         car.numberId = [NSString stringWithFormat:@"%d",j];
         [car saveToDB];
+    }
+}
+
+
+-(void)saveCarParameterData:(NSArray*)dataArray
+{
+    for (int  k= 0; k < dataArray.count; k++) {
+        CarParameter* carParameter = [[CarParameter alloc] init];
+        carParameter.menuId = [[dataArray objectAtIndex:k] objectForKey:kMenuId];
+        carParameter.menuText = [[dataArray objectAtIndex:k] objectForKey:kMenuText];
+        carParameter.carId = [[dataArray objectAtIndex:k] objectForKey:kCarId];
+    }
+}
+
+-(void)saveParameterMenuData:(NSArray*)dataArray
+{
+    for (int  i= 0; i < dataArray.count; i++) {
+        ParameterMenu* parameterMenu = [[ParameterMenu alloc] init];
+        parameterMenu.menuId = [[dataArray objectAtIndex:i] objectForKey:kMenuId];
+        parameterMenu.menuText = [[dataArray objectAtIndex:i] objectForKey:kMenuText];
+        parameterMenu.parentId = [[dataArray objectAtIndex:i] objectForKey:kParentId];
     }
 }
 
