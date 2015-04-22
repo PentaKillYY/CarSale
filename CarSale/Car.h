@@ -12,9 +12,6 @@
 @interface Car : NSObject
 @property(copy,nonatomic)NSString* carId;
 @property(copy,nonatomic)NSString* menuId;
-//@property(copy,nonatomic)NSString* length;
-//@property(copy,nonatomic)NSString* height;
-//@property(copy,nonatomic)NSString* width;
 @property(copy,nonatomic)NSString* color;
 @property(copy,nonatomic)NSString* colorRGB;
 @property(copy,nonatomic)NSString* carClass;

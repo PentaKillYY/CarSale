@@ -35,9 +35,7 @@
     //enable the column binding property name
     [self setTableColumnName:@"CarId" bindingPropertyName:@"carId"];
     [self setTableColumnName:@"MenuId" bindingPropertyName:@"menuId"];
-//    [self setTableColumnName:@"Length" bindingPropertyName:@"lenght"];
-//    [self setTableColumnName:@"Width" bindingPropertyName:@"width"];
-//    [self setTableColumnName:@"Height" bindingPropertyName:@"height"];
+
     [self setTableColumnName:@"Color" bindingPropertyName:@"color"];
     [self setTableColumnName:@"ColorRGB" bindingPropertyName:@"colorRGB"];
     [self setTableColumnName:@"CarClass" bindingPropertyName:@"carClass"];
