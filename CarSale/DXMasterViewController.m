@@ -24,22 +24,12 @@
 }
 
 -(void)configureView{
-
-    [MBProgressHUD showHUDAddedTo:self.contentView animated:YES];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 耗时的操作
-        sleep(1);
-        [[SearchFromDBHandler sharedSearchHandler] getCarNameFromDataBaseWhere:[_detailItem description] OnSuccess:^(NSArray *array) {
-            self.dataSourceArray = [NSArray arrayWithArray:array];
-            // 更新界面
-            
-        }];
+    [[SearchFromDBHandler sharedSearchHandler] getCarNameFromDataBaseWhere:[_detailItem description] OnSuccess:^(NSArray *array) {
+        self.dataSourceArray = [NSArray arrayWithArray:array];
         dispatch_async(dispatch_get_main_queue(), ^{
-            // 更新界面
-            [MBProgressHUD hideAllHUDsForView:self.contentView animated:YES];
             [self.tableView reloadData];
         });
-    });    
+    }];
 }
 
 - (void)viewDidLoad
@@ -75,12 +65,10 @@
         
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     
-    
     [self.view addSubview:self.contentView];
     [self.view addSubview:anotherView];
     [anotherView addGestureRecognizer:tap];
     [self.view addGestureRecognizer:swipe];
-    
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
@@ -92,6 +80,13 @@
     } completion:^(BOOL finished) {
         [super willMoveToParentViewController:parent];
     }];
+}
+
+-(void)reloadTableViewDataSource
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (void)dismissSemi:(id)sender
@@ -116,7 +111,6 @@
     [self removeFromParentViewController];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -126,7 +120,6 @@
 #pragma TableViewdataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    NSLog(@"%d",self.dataSourceArray.count);
     
     if (self.dataSourceArray) {
         return self.dataSourceArray.count;
@@ -153,9 +146,10 @@
             [view removeFromSuperview];
         }
     }
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(55, 0, 200, 50)];
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 200, 50)];
     self.label.text =self.dataSourceArray[indexPath.row];
     self.label.textColor = [UIColor whiteColor];
+    self.label.font = [UIFont systemFontOfSize:13];
     UIImageView* bgView = [[UIImageView alloc] initWithFrame:cell.frame];
     [bgView setImage:[UIImage imageNamed:@"Menu.png"]];
     [bgView makeInsetShadowWithRadius:5.0 Color:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.8] Directions:[NSArray arrayWithObjects:@"top", nil]];
@@ -171,7 +165,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     if (!self.dataSourceArray) {
-        MainSectionview* sectionView = [[MainSectionview alloc] init];
+        UIView* sectionView = [[UIView alloc] init];
         return (UITableViewHeaderFooterView*)sectionView;
     }else{
         MainSectionview* sectionView = [[MainSectionview alloc] initWithFrame:CGRectMake(0, 0, 230, 50)];
@@ -199,7 +193,5 @@
 -(void)shouldChangeRow:(NSInteger)sectionNumber {
    
 }
-
-
 
 @end
