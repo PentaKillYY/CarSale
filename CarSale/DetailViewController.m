@@ -21,7 +21,8 @@
 #import "DXSemiViewControllerCategory.h"
 #import <MBProgressHUD.h>
 
-@interface DetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XCMultiTableViewDataSource,ShowAllImageDelegate>
+@interface DetailViewController ()
+//<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XCMultiTableViewDataSource,ShowAllImageDelegate>
 {
     XCMultiTableView * xcMultiTableView;
     NSString* carId;
@@ -67,17 +68,17 @@
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:[self.detailItem description] OnSuccess:^(NSArray *array) {
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
-                [self prepareCarInfoDataSource];
-                [self prepareCarImageDataSource:0];
+//                [self prepareCarInfoDataSource];
+//                [self prepareCarImageDataSource:0];
             }];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 更新界面
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
-                [self setCarInfoGridView];
+//                [self setCarInfoGridView];
                 [self setMainCarImageView:0];
                 [self setColorSelectedView];
-                [self setCarImageSectionView];
+//                [self setCarImageSectionView];
             });
         });
     }
@@ -164,7 +165,7 @@
 - (void)changeColor:(UIButton *)sender {
     NSLog(@"Button tapped, tag: %ld", (long)sender.tag);
     [self setMainCarImageView:sender.tag];
-    [self prepareCarImageDataSource:sender.tag];
+//    [self prepareCarImageDataSource:sender.tag];
 
 }
 
@@ -200,235 +201,235 @@
 
 #pragma mark - CarInfoDataPrepare
 
--(void)prepareCarInfoDataSource{
-    headData = [NSMutableArray arrayWithCapacity:self.carInfoArray.count];
-    for (NSString* info in kCarInfoCategory) {
-        [headData addObject:info];
-    }
-    
-    leftTableData = [NSMutableArray arrayWithCapacity:5];
-    NSMutableArray *one = [NSMutableArray arrayWithCapacity:3];
-    [one addObject:@"数值"];
-    [leftTableData addObject:one];
-    rightTableData = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-    NSMutableArray *oneR = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-    for (int i = 0; i < 1; i++) {
-        NSMutableArray *ary = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-        for (int j = 0; j < kCarInfoCategory.count; j++) {
-            for (Car* car in self.carInfoArray) {
-                [ary addObject:car.carClass];
-                [ary addObject:car.size];
-                [ary addObject:car.topSpeed];
-                [ary addObject:car.acceleration];
-                [ary addObject:car.oilConsumption];
-                [ary addObject:car.wheelBase];
-                [ary addObject:car.intake];
-                [ary addObject:car.cylinderType];
-                [ary addObject:car.cylinderNumber];
-                [ary addObject:car.reduction];
-                [ary addObject:car.horsePower];
-                [ary addObject:car.engine];
-                [ary addObject:car.power];
-                [ary addObject:car.torque];
-                [ary addObject:car.fuelForm];
-                [ary addObject:car.fuelGrade];
-                [ary addObject:car.transMission];
-                [ary addObject:car.gear];
-                [ary addObject:car.transmissionType];
-                [ary addObject:car.frontSuspension];
-                [ary addObject:car.backSuspension];
-                [ary addObject:car.airBag];
-                [ary addObject:car.sideAirBag];
-                [ary addObject:car.absType];
-                [ary addObject:car.skyLight];
-                [ary addObject:car.leatherSeat];
-                [ary addObject:car.seatHeight];
-            }
-        }
-        [oneR addObject:ary];
-    }
-    [rightTableData addObject:oneR];
-}
-
--(void)setCarInfoGridView{
-    if (xcMultiTableView) {
-        [xcMultiTableView removeFromSuperview];
-    }
-    xcMultiTableView = [[XCMultiTableView alloc] initWithFrame:CGRectInset(CGRectMake(10, 75, 694, 120), 5.0f, 5.0f)];
-    xcMultiTableView.leftHeaderEnable = YES;
-    xcMultiTableView.datasource = self;
-    
-    [self.carInfoView addSubview:xcMultiTableView];
-    [xcMultiTableView reloadData];
-    
-}
-
-
-#pragma mark - XCMultiTableViewDataSource
-
-- (NSArray *)arrayDataForTopHeaderInTableView:(XCMultiTableView *)tableView {
-    return [headData copy];
-}
-- (NSArray *)arrayDataForLeftHeaderInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
-    return [leftTableData objectAtIndex:section];
-}
-
-- (NSArray *)arrayDataForContentInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
-    return [rightTableData objectAtIndex:section];
-}
+//-(void)prepareCarInfoDataSource{
+//    headData = [NSMutableArray arrayWithCapacity:self.carInfoArray.count];
+//    for (NSString* info in kCarInfoCategory) {
+//        [headData addObject:info];
+//    }
+//    
+//    leftTableData = [NSMutableArray arrayWithCapacity:5];
+//    NSMutableArray *one = [NSMutableArray arrayWithCapacity:3];
+//    [one addObject:@"数值"];
+//    [leftTableData addObject:one];
+//    rightTableData = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+//    NSMutableArray *oneR = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+//    for (int i = 0; i < 1; i++) {
+//        NSMutableArray *ary = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+//        for (int j = 0; j < kCarInfoCategory.count; j++) {
+//            for (Car* car in self.carInfoArray) {
+//                [ary addObject:car.carClass];
+//                [ary addObject:car.size];
+//                [ary addObject:car.topSpeed];
+//                [ary addObject:car.acceleration];
+//                [ary addObject:car.oilConsumption];
+//                [ary addObject:car.wheelBase];
+//                [ary addObject:car.intake];
+//                [ary addObject:car.cylinderType];
+//                [ary addObject:car.cylinderNumber];
+//                [ary addObject:car.reduction];
+//                [ary addObject:car.horsePower];
+//                [ary addObject:car.engine];
+//                [ary addObject:car.power];
+//                [ary addObject:car.torque];
+//                [ary addObject:car.fuelForm];
+//                [ary addObject:car.fuelGrade];
+//                [ary addObject:car.transMission];
+//                [ary addObject:car.gear];
+//                [ary addObject:car.transmissionType];
+//                [ary addObject:car.frontSuspension];
+//                [ary addObject:car.backSuspension];
+//                [ary addObject:car.airBag];
+//                [ary addObject:car.sideAirBag];
+//                [ary addObject:car.absType];
+//                [ary addObject:car.skyLight];
+//                [ary addObject:car.leatherSeat];
+//                [ary addObject:car.seatHeight];
+//            }
+//        }
+//        [oneR addObject:ary];
+//    }
+//    [rightTableData addObject:oneR];
+//}
+//
+//-(void)setCarInfoGridView{
+//    if (xcMultiTableView) {
+//        [xcMultiTableView removeFromSuperview];
+//    }
+//    xcMultiTableView = [[XCMultiTableView alloc] initWithFrame:CGRectInset(CGRectMake(10, 75, 694, 120), 5.0f, 5.0f)];
+//    xcMultiTableView.leftHeaderEnable = YES;
+//    xcMultiTableView.datasource = self;
+//    
+//    [self.carInfoView addSubview:xcMultiTableView];
+//    [xcMultiTableView reloadData];
+//    
+//}
 
 
-- (NSUInteger)numberOfSectionsInTableView:(XCMultiTableView *)tableView {
-    return [leftTableData count];
-}
+//#pragma mark - XCMultiTableViewDataSource
+//
+//- (NSArray *)arrayDataForTopHeaderInTableView:(XCMultiTableView *)tableView {
+//    return [headData copy];
+//}
+//- (NSArray *)arrayDataForLeftHeaderInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
+//    return [leftTableData objectAtIndex:section];
+//}
+//
+//- (NSArray *)arrayDataForContentInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
+//    return [rightTableData objectAtIndex:section];
+//}
+//
+//
+//- (NSUInteger)numberOfSectionsInTableView:(XCMultiTableView *)tableView {
+//    return [leftTableData count];
+//}
+//
+//- (CGFloat)tableView:(XCMultiTableView *)tableView contentTableCellWidth:(NSUInteger)column {
+//    return 100.0f;
+//}
+//
+//- (CGFloat)tableView:(XCMultiTableView *)tableView cellHeightInRow:(NSUInteger)row InSection:(NSUInteger)section {        return 60.0f;
+//}
+//
+//- (UIColor *)tableView:(XCMultiTableView *)tableView bgColorInSection:(NSUInteger)section InRow:(NSUInteger)row InColumn:(NSUInteger)column {
+//    
+//    return [UIColor clearColor];
+//}
+//
+//- (UIColor *)tableView:(XCMultiTableView *)tableView headerBgColorInColumn:(NSUInteger)column {
+//    return [UIColor grayColor];
+//}
 
-- (CGFloat)tableView:(XCMultiTableView *)tableView contentTableCellWidth:(NSUInteger)column {
-    return 100.0f;
-}
-
-- (CGFloat)tableView:(XCMultiTableView *)tableView cellHeightInRow:(NSUInteger)row InSection:(NSUInteger)section {        return 60.0f;
-}
-
-- (UIColor *)tableView:(XCMultiTableView *)tableView bgColorInSection:(NSUInteger)section InRow:(NSUInteger)row InColumn:(NSUInteger)column {
-    
-    return [UIColor clearColor];
-}
-
-- (UIColor *)tableView:(XCMultiTableView *)tableView headerBgColorInColumn:(NSUInteger)column {
-    return [UIColor grayColor];
-}
-
-#pragma mark -  CollectionViewDataPrepre
-
-- (void)prepareCarImageDataSource:(NSInteger)colorIndex
-{
-    NSArray* colorArray;
-    for (Car* car in self.carInfoArray) {
-        colorArray = [NSArray arrayWithArray:[NSString seperateStringToArray:car.color]] ;
-        NSMutableArray* tempforeImage = [[NSMutableArray alloc] init];
-        NSMutableArray* tempbackImage = [[NSMutableArray alloc] init];
-        NSMutableArray* tempsideImage = [[NSMutableArray alloc] init];
-        NSMutableArray* tempinnerImage = [[NSMutableArray alloc] init];
-        for (NSString* foreurl in [NSString seperateStringToArray:car.foreImageUrl]) {
-            if ([foreurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
-                [tempforeImage addObject:foreurl];
-            }
-        }
-        for (NSString* backurl in [NSString seperateStringToArray:car.backImageUrl]) {
-            if ([backurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
-                [tempbackImage addObject:backurl];
-            }
-        }
-        for (NSString* sideurl in [NSString seperateStringToArray:car.sideImageUrl]) {
-            if ([sideurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
-                [tempsideImage addObject:sideurl];
-            }
-        }
-        for (NSString* innerurl in [NSString seperateStringToArray:car.innerImageUrl]) {
-            if ([innerurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
-                [tempinnerImage addObject:innerurl];
-            }
-        }
-        
-        [self.imageArray addObject:tempforeImage];
-        [self.imageArray addObject:tempbackImage];
-        [self.imageArray addObject:tempsideImage];
-        [self.imageArray addObject:tempinnerImage];
-    }
-}
-
--(void)setCarImageSectionView
-{
-    [self.imageCollectionView reloadData];
-}
-
-#pragma mark -  CollectionView DataSource
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    if (!self.imageArray.count) {
-        return 0;
-    }
-    return 4;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    if (!self.imageArray.count) {
-        return 0;
-    }else if ([[self.imageArray objectAtIndex:section] count] > 12){
-        return 12;
-    }else{
-        return [[self.imageArray objectAtIndex:section]count];
-    }
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CollectionViewCell *cell = (CollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
-    if (self.imageArray.count) {
-        NSMutableString* completeurl = [[NSMutableString alloc] init];
-        [completeurl appendString:BaseImageUrl];
-        [completeurl appendString:carId];
-        [completeurl appendString:kImageFloder[indexPath.section]];
-        [completeurl appendString:@"/"];
-    
-        [completeurl appendString:[[self.imageArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-        [cell.carImageView sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-
-    }
-    return cell;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *reusableview = nil;
-    if (kind == UICollectionElementKindSectionHeader){
-        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        
-        headerView.delegate = self;
-        if (!self.imageArray.count) {
-            headerView.galleryNameLabel.text = @"";
-            headerView.galleryNumberlabel.text = @"0 张";
-        }else{
-            headerView.galleryNameLabel.text = kImageCategory[indexPath.section];
-            headerView.galleryNumberlabel.text = [NSString stringWithFormat:@"%ld 张",(unsigned long)[[self.imageArray objectAtIndex:indexPath.section] count]];
-            headerView.showAllButton.tag = indexPath.section;
-        }
-        
-        reusableview = headerView;
-    
-    }
-    return reusableview;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    // 深拷贝数据
-    NSMutableArray *imgList = [NSMutableArray arrayWithCapacity:[[self.imageArray objectAtIndex:indexPath.section]count]];
-    for (int i = 0; i < [[self.imageArray objectAtIndex:indexPath.section]count]; i++) {
-        NSMutableString* completeurl = [[NSMutableString alloc] init];
-        [completeurl appendString:BaseImageUrl];
-        [completeurl appendString:carId];
-        [completeurl appendString:kImageFloder[indexPath.section]];
-        [completeurl appendString:@"/"];
-        [completeurl appendString:[self.imageArray objectAtIndex:indexPath.section][i]];
-        [imgList addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    }
-
-    // 调用展示窗口
-    ImgShowViewController *imgShow = [[ImgShowViewController alloc] initWithSourceData:imgList withIndex:indexPath.row];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imgShow];
-    
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
--(void)shouldShowAllImageView:(id)sender
-{
-    UIButton* button = (UIButton*)sender;
-    DXImageViewController* semiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXSemi"];
-    NSDictionary* cardic = @{@"sectionNumber":[NSString stringWithFormat:@"%d",button.tag],@"carid":carId,@"imageArray":self.imageArray,@"titlename":[NSString stringWithFormat:@"%@    %ld 张",kImageCategory[button.tag],(unsigned long)[[self.imageArray objectAtIndex:button.tag] count]]};
-    [self setRightSemiViewController:semiViewController Title:cardic];
-}
+//#pragma mark -  CollectionViewDataPrepre
+//
+//- (void)prepareCarImageDataSource:(NSInteger)colorIndex
+//{
+//    NSArray* colorArray;
+//    for (Car* car in self.carInfoArray) {
+//        colorArray = [NSArray arrayWithArray:[NSString seperateStringToArray:car.color]] ;
+//        NSMutableArray* tempforeImage = [[NSMutableArray alloc] init];
+//        NSMutableArray* tempbackImage = [[NSMutableArray alloc] init];
+//        NSMutableArray* tempsideImage = [[NSMutableArray alloc] init];
+//        NSMutableArray* tempinnerImage = [[NSMutableArray alloc] init];
+//        for (NSString* foreurl in [NSString seperateStringToArray:car.foreImageUrl]) {
+//            if ([foreurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
+//                [tempforeImage addObject:foreurl];
+//            }
+//        }
+//        for (NSString* backurl in [NSString seperateStringToArray:car.backImageUrl]) {
+//            if ([backurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
+//                [tempbackImage addObject:backurl];
+//            }
+//        }
+//        for (NSString* sideurl in [NSString seperateStringToArray:car.sideImageUrl]) {
+//            if ([sideurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
+//                [tempsideImage addObject:sideurl];
+//            }
+//        }
+//        for (NSString* innerurl in [NSString seperateStringToArray:car.innerImageUrl]) {
+//            if ([innerurl rangeOfString:[colorArray objectAtIndex:colorIndex]].location != NSNotFound) {
+//                [tempinnerImage addObject:innerurl];
+//            }
+//        }
+//        
+//        [self.imageArray addObject:tempforeImage];
+//        [self.imageArray addObject:tempbackImage];
+//        [self.imageArray addObject:tempsideImage];
+//        [self.imageArray addObject:tempinnerImage];
+//    }
+//}
+//
+//-(void)setCarImageSectionView
+//{
+//    [self.imageCollectionView reloadData];
+//}
+//
+//#pragma mark -  CollectionView DataSource
+//
+//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+//{
+//    if (!self.imageArray.count) {
+//        return 0;
+//    }
+//    return 4;
+//}
+//
+//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+//{
+//    if (!self.imageArray.count) {
+//        return 0;
+//    }else if ([[self.imageArray objectAtIndex:section] count] > 12){
+//        return 12;
+//    }else{
+//        return [[self.imageArray objectAtIndex:section]count];
+//    }
+//}
+//
+//- (UICollectionViewCell *)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CollectionViewCell *cell = (CollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
+//    if (self.imageArray.count) {
+//        NSMutableString* completeurl = [[NSMutableString alloc] init];
+//        [completeurl appendString:BaseImageUrl];
+//        [completeurl appendString:carId];
+//        [completeurl appendString:kImageFloder[indexPath.section]];
+//        [completeurl appendString:@"/"];
+//    
+//        [completeurl appendString:[[self.imageArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+//        [cell.carImageView sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+//
+//    }
+//    return cell;
+//}
+//
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionReusableView *reusableview = nil;
+//    if (kind == UICollectionElementKindSectionHeader){
+//        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+//        
+//        headerView.delegate = self;
+//        if (!self.imageArray.count) {
+//            headerView.galleryNameLabel.text = @"";
+//            headerView.galleryNumberlabel.text = @"0 张";
+//        }else{
+//            headerView.galleryNameLabel.text = kImageCategory[indexPath.section];
+//            headerView.galleryNumberlabel.text = [NSString stringWithFormat:@"%ld 张",(unsigned long)[[self.imageArray objectAtIndex:indexPath.section] count]];
+//            headerView.showAllButton.tag = indexPath.section;
+//        }
+//        
+//        reusableview = headerView;
+//    
+//    }
+//    return reusableview;
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // 深拷贝数据
+//    NSMutableArray *imgList = [NSMutableArray arrayWithCapacity:[[self.imageArray objectAtIndex:indexPath.section]count]];
+//    for (int i = 0; i < [[self.imageArray objectAtIndex:indexPath.section]count]; i++) {
+//        NSMutableString* completeurl = [[NSMutableString alloc] init];
+//        [completeurl appendString:BaseImageUrl];
+//        [completeurl appendString:carId];
+//        [completeurl appendString:kImageFloder[indexPath.section]];
+//        [completeurl appendString:@"/"];
+//        [completeurl appendString:[self.imageArray objectAtIndex:indexPath.section][i]];
+//        [imgList addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    }
+//
+//    // 调用展示窗口
+//    ImgShowViewController *imgShow = [[ImgShowViewController alloc] initWithSourceData:imgList withIndex:indexPath.row];
+//    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imgShow];
+//    
+//    [self presentViewController:nav animated:YES completion:nil];
+//}
+//
+//-(void)shouldShowAllImageView:(id)sender
+//{
+//    UIButton* button = (UIButton*)sender;
+//    DXImageViewController* semiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXSemi"];
+//    NSDictionary* cardic = @{@"sectionNumber":[NSString stringWithFormat:@"%d",button.tag],@"carid":carId,@"imageArray":self.imageArray,@"titlename":[NSString stringWithFormat:@"%@    %ld 张",kImageCategory[button.tag],(unsigned long)[[self.imageArray objectAtIndex:button.tag] count]]};
+//    [self setRightSemiViewController:semiViewController Title:cardic];
+//}
 @end
