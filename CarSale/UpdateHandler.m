@@ -51,12 +51,29 @@
                 if (json) {
                     NSArray* carArray = (NSArray*)json;
                     [[DataBaseHelper sharedDatabaseHandler] saveCarData:carArray];
-                    
-                    success(1);
+                    [[CarParameterRequest sharedCarParameterRequest] postCarParameterOnCompletion:^(id json) {
+                        if (json) {
+                            NSArray* carParameterArray = (NSArray*)json;
+                            [[DataBaseHelper sharedDatabaseHandler] saveCarParameterData:carParameterArray];
+                            [[ParameterMenuRequest sharedParameterMenuRequest] postParameterMenuOnCompletion:^(id json) {
+                                if (json) {
+                                    NSArray* parameterMenuArray = (NSArray*)json;
+                                    [[DataBaseHelper sharedDatabaseHandler] saveParameterMenuData:parameterMenuArray];
+                                    success(1);
+                                }
+                                
+                            } onFailure:^(id json) {
+                                
+                            }];
+                        }
+                    } onFailure:^(id json) {
+                        
+                    }];
                 }
             } onFailure:^(id json) {
                 
             }];
+            
         }
     } onFailure:^(id json) {
         
