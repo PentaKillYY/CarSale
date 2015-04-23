@@ -30,4 +30,9 @@ typedef void(^SuccessDic)(NSDictionary* dictionary);
 -(void)selectMenuFromDatabaseOnSuccess:(Success)success;
 -(void)selectCarNameFromDataBaseWhere:(NSString*)menuText OnSuccess:(Success)success;
 -(void)selectCarFromDataBaseWhere:(NSString*)menuText OnSuccess:(Success)success;
+-(void)selectMenuIdFromdataBaseWhere:(NSString*)menuText onSuccess:(Success)success;
+-(void)selectParameterFromDataBaseWhere:(NSString*)carId menuID:(NSString*)menuid OnSuccess:(Success)success;
+-(void)selectCarIdFromDataBaseWhere:(NSString*)menuText onSuccess:(Success)success;
+-(void)selectBasicCarInfoFromDataBase:(NSString*)carId onSuccess:(SuccessDic)success;
+-(void)selectParameterNameFromDataBase:(NSString*)menuId onSuccess:(Success)success;
 @end
