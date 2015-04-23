@@ -44,6 +44,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mt5-05-FT0" id="4vD-qK-goN">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="XLm-nz-XIh" kind="replace" identifier="masterChange" splitViewControllerTargetIndex="1" id="nQ1-71-pte"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -110,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6L-g8-plA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-416" y="294"/>
+            <point key="canvasLocation" x="-448" y="546"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="STA-OS-Akj">
@@ -138,6 +141,9 @@
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BfM-eV-8LX" id="SRR-yg-vE1">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="XLm-nz-XIh" kind="replace" identifier="DXMasterChange" splitViewControllerTargetIndex="1" id="mh3-uz-y6T"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -165,7 +171,7 @@
         <!--Detail View Controller-->
         <scene sceneID="lon-Ex-AKb">
             <objects>
-                <viewController id="XLm-nz-XIh" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="XLm-nz-XIh" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="si4-mB-Tdf"/>
                         <viewControllerLayoutGuide type="bottom" id="rW1-Wh-cDj"/>
@@ -177,11 +183,11 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1F-cl-Xkk">
                                 <rect key="frame" x="0.0" y="100" width="704" height="250"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XuA-nb-f8k">
-                                        <rect key="frame" x="23" y="82" width="658" height="141"/>
-                                    </imageView>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="H72-1d-97p">
                                         <rect key="frame" x="0.0" y="0.0" width="704" height="250"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shU-mg-FhG">
+                                        <rect key="frame" x="23" y="82" width="658" height="141"/>
                                     </imageView>
                                 </subviews>
                             </view>
@@ -197,24 +203,24 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnw-wZ-pai">
                                 <rect key="frame" x="0.0" y="20" width="704" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2012款 1.6XE CVT舒适版" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-xB-0c0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-xB-0c0">
                                         <rect key="frame" x="37" y="8" width="631" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="厂商指导价：12.9万" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXU-vK-tjy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXU-vK-tjy">
                                         <rect key="frame" x="37" y="29" width="631" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="厂商：东风日产" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3g-b3-jIj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3g-b3-jIj">
                                         <rect key="frame" x="37" y="51" width="192" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="级别：紧凑级车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6V-gP-Soy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6V-gP-Soy">
                                         <rect key="frame" x="181" y="52" width="119" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,9 +237,15 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="carBrandView" destination="xnw-wZ-pai" id="EXW-JB-gp4"/>
+                        <outlet property="carClassLabel" destination="u6V-gP-Soy" id="GNx-LL-kex"/>
                         <outlet property="carColorBG" destination="H72-1d-97p" id="KLp-tU-Noi"/>
                         <outlet property="carColorView" destination="Y1F-cl-Xkk" id="wwx-Ub-g6N"/>
-                        <outlet property="mainCarImg" destination="XuA-nb-f8k" id="NL4-X6-8Ao"/>
+                        <outlet property="carNameLabel" destination="Gpb-xB-0c0" id="MsR-4s-cnF"/>
+                        <outlet property="carPriceLabel" destination="KXU-vK-tjy" id="bgH-uo-SLd"/>
+                        <outlet property="infoView" destination="7JL-dz-z7H" id="riN-pS-69s"/>
+                        <outlet property="mainCarImg" destination="shU-mg-FhG" id="cdP-aQ-zUj"/>
+                        <outlet property="manufactureLabel" destination="T3g-b3-jIj" id="p6k-fe-BOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKh-zN-DeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -446,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRX-G0-cSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720" y="-2820"/>
+            <point key="canvasLocation" x="1684" y="-2988"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -522,4 +534,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="mh3-uz-y6T"/>
+    </inferredMetricsTieBreakers>
 </document>
