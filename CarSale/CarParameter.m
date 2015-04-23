@@ -35,12 +35,13 @@
     //enable the column binding property name
     [self setTableColumnName:@"MenuId" bindingPropertyName:@"menuId"];
     [self setTableColumnName:@"CarId" bindingPropertyName:@"carId"];
-    [self setTableColumnName:@"MenuText" bindingPropertyName:@"menuText"];
+    [self setTableColumnName:@"ParameterText" bindingPropertyName:@"parameterText"];
+    [self setTableColumnName:@"NumberId" bindingPropertyName:@"numberId"];
 }
 
 +(NSString *)getPrimaryKey
 {
-    return @"MenuId";
+    return @"NumberId";
 }
 
 @end

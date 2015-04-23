@@ -12,7 +12,8 @@
 @interface CarParameter : NSObject
 @property(copy,nonatomic)NSString* menuId;
 @property(copy,nonatomic)NSString* carId;
-@property(copy,nonatomic)NSString* menuText;
+@property(copy,nonatomic)NSString* parameterText;
+@property(copy,nonatomic)NSString* numberId;
 @end
 
 @interface NSObject(PrintCarParameterSQL)
