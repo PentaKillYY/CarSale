@@ -7,7 +7,7 @@
 //
 
 #import "DXMasterViewController.h"
-
+#import "DetailViewController.h"
 @interface DXMasterViewController ()
 @property(nonatomic,retain)NSArray* dataSourceArray;
 @property (retain,nonatomic)UILabel* label;
@@ -30,6 +30,21 @@
             [self.tableView reloadData];
         });
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"DXMasterChange"]) {
+        UITableViewCell *cell=(id)sender;
+        NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+        if (indexPath.row == 0) {
+            DetailViewController* detail = (DetailViewController*)[segue destinationViewController];
+            [detail setDetailItem:@{@"Menu":[_detailItem description]}];
+        }else{
+            DetailViewController* detail = (DetailViewController*)[segue destinationViewController];
+            [detail setDetailItem:@{@"Car":self.dataSourceArray[indexPath.row-1]}];
+        }
+        
+    }
 }
 
 - (void)viewDidLoad
@@ -122,7 +137,7 @@
     // Return the number of rows in the section.
     
     if (self.dataSourceArray) {
-        return self.dataSourceArray.count;
+        return (self.dataSourceArray.count+1);
     }
     return 0;
 }
@@ -131,9 +146,9 @@
     return 50.0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50.0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 50.0;
+//}
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -146,42 +161,51 @@
             [view removeFromSuperview];
         }
     }
+    
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 200, 50)];
-    self.label.text =self.dataSourceArray[indexPath.row];
-    self.label.textColor = [UIColor whiteColor];
-    self.label.font = [UIFont systemFontOfSize:13];
-    UIImageView* bgView = [[UIImageView alloc] initWithFrame:cell.frame];
-    [bgView setImage:[UIImage imageNamed:@"Menu.png"]];
-    [bgView makeInsetShadowWithRadius:5.0 Color:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.8] Directions:[NSArray arrayWithObjects:@"top", nil]];
-    UIImageView* selectedBGView = [[UIImageView alloc] initWithFrame:cell.frame];
-    [selectedBGView setImage:[UIImage imageNamed:@"MenuSelected.png"]];
-    [selectedBGView makeInsetShadowWithRadius:5.0 Color:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.8] Directions:[NSArray arrayWithObjects:@"top", nil]];
-    cell.backgroundView = (UIView*)bgView;
-    cell.selectedBackgroundView = (UIView*)selectedBGView;
+    if (indexPath.row == 0) {
+        self.label.font = [UIFont systemFontOfSize:15];
+        self.label.text =[_detailItem description];
+        self.label.textColor = [UIColor blackColor];
+        UIImageView* bgView = [[UIImageView alloc] initWithFrame:cell.frame];
+        [bgView setImage:[UIImage imageNamed:@"DXMenu.png"]];
+        UIImageView* selectedBGView = [[UIImageView alloc] initWithFrame:cell.frame];
+        [selectedBGView setImage:[UIImage imageNamed:@"DXMenu.png"]];
+        cell.backgroundView = (UIView*)bgView;
+        cell.selectedBackgroundView = (UIView*)selectedBGView;
+    }else{
+        self.label.font = [UIFont systemFontOfSize:13];
+        self.label.textColor = [UIColor whiteColor];
+        self.label.text =self.dataSourceArray[indexPath.row-1];
+        UIImageView* bgView = [[UIImageView alloc] initWithFrame:cell.frame];
+        [bgView setImage:[UIImage imageNamed:@"Menu.png"]];
+        [bgView makeInsetShadowWithRadius:5.0 Color:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.8] Directions:[NSArray arrayWithObjects:@"top", nil]];
+        UIImageView* selectedBGView = [[UIImageView alloc] initWithFrame:cell.frame];
+        [selectedBGView setImage:[UIImage imageNamed:@"MenuSelected.png"]];
+        [selectedBGView makeInsetShadowWithRadius:5.0 Color:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.8] Directions:[NSArray arrayWithObjects:@"top", nil]];
+        cell.backgroundView = (UIView*)bgView;
+        cell.selectedBackgroundView = (UIView*)selectedBGView;
+    }
+    
     [cell.contentView addSubview:self.label];
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    if (!self.dataSourceArray) {
-        UIView* sectionView = [[UIView alloc] init];
-        return (UITableViewHeaderFooterView*)sectionView;
-    }else{
-        MainSectionview* sectionView = [[MainSectionview alloc] initWithFrame:CGRectMake(0, 0, 230, 50)];
-        [sectionView awakeFromNib];
-        sectionView.SelectedDelegate = self;
-        sectionView.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DXMenu.png"]];
-        sectionView.label.textColor = [UIColor blackColor];
-        sectionView.label.text = [_detailItem description];
-        return (UITableViewHeaderFooterView*)sectionView;
-    }
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    
+//    if (!self.dataSourceArray) {
+//        UIView* sectionView = [[UIView alloc] init];
+//        return (UITableViewHeaderFooterView*)sectionView;
+//    }else{
+//        MainSectionview* sectionView = [[MainSectionview alloc] initWithFrame:CGRectMake(0, 0, 230, 50)];
+//        [sectionView awakeFromNib];
+//        sectionView.SelectedDelegate = self;
+//        sectionView.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DXMenu.png"]];
+//        sectionView.label.textColor = [UIColor blackColor];
+//        sectionView.label.text = [_detailItem description];
+//        return (UITableViewHeaderFooterView*)sectionView;
+//    }
+//}
 
 - (void)setExtraCellLineHidden{
     UIView *view =[ [UIView alloc]init];
@@ -190,8 +214,6 @@
     [self.tableView setTableHeaderView:view];
 }
 
--(void)shouldChangeRow:(NSInteger)sectionNumber {
-   
-}
+
 
 @end

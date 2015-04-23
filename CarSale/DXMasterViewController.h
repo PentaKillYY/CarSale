@@ -18,7 +18,7 @@ typedef enum {
 }SemiMasterDirection;
 
 
-@interface DXMasterViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ContentSlected>
+@interface DXMasterViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, assign) SemiMasterDirection direction;
 @property (nonatomic, assign) CGFloat sideAnimationDuration;
