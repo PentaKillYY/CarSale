@@ -19,6 +19,7 @@
 #import "LaunchViewController.h"
 #import <AFNetworkReachabilityManager.h>
 #import "DXSemiViewControllerCategory.h"
+#import "DetailViewController.h"
 @interface MasterViewController ()<UITableViewDataSource,UITableViewDelegate,ContentSlected>
 
 @property NSMutableArray *objects;
@@ -101,19 +102,19 @@
     [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-////    if ([[segue identifier] isEqualToString:@"PushToSecond"]) {
-////        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-////        SecondMasterTableViewController* secondMaster = (SecondMasterTableViewController*)[segue destinationViewController];
-////        [secondMaster setSelectedItem:[[[self.dataAry objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row]];
-////    }
-////    if ([[segue identifier] isEqualToString:@"showDXMaster"]) {
-////        UITableViewCell *cell = (UITableViewCell*)sender;
-////        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-////        DXMasterViewController* semiMasterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXMaster"];
-////        [self setMasterRightSemiViewController:semiMasterViewController Title:[[[self.dataAry objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row]];
-////    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([[segue identifier] isEqualToString:@"PushToSecond"]) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        SecondMasterTableViewController* secondMaster = (SecondMasterTableViewController*)[segue destinationViewController];
+//        [secondMaster setSelectedItem:[[[self.dataAry objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row]];
+//    }
+    if ([[segue identifier] isEqualToString:@"masterChange"]) {
+        UITableViewCell *cell=(id)sender;
+        NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+        DetailViewController* detail = (DetailViewController*)[segue destinationViewController];
+        [detail setDetailItem:@{@"Menu":[[[self.dataAry objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row]}];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.dataAry.count == 0) {
