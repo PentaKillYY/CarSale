@@ -43,6 +43,7 @@
 @property(strong,nonatomic)IBOutlet UICollectionView* imageCollectionView;
 @property(strong,nonatomic)IBOutlet UIImageView* infoView;
 @property(retain,nonatomic)NSMutableArray* carInfoArray;
+@property(retain,nonatomic)NSMutableArray* carParameterArray;
 @property(retain,nonatomic)NSMutableArray* imageArray;
 @property(retain,nonatomic)IBOutlet UIImageView* mainCarImg;
 @end
@@ -87,10 +88,8 @@
                     });
                 }];
                 [[SearchFromDBHandler sharedSearchHandler] getCarParameterFromDataBaseWhere:@"Car" Parameter:detailValue onSuccess:^(NSArray *array) {
-                    NSLog(@"%@",array);
+                    self.carParameterArray = [NSMutableArray arrayWithArray:array];
                 }];
-                
-                
             }];
 //            dispatch_async(dispatch_get_main_queue(), ^{
                 // 更新界面
@@ -108,7 +107,7 @@
         });
         
         [[SearchFromDBHandler sharedSearchHandler] getCarParameterFromDataBaseWhere:@"Menu" Parameter:detailValue onSuccess:^(NSArray *array) {
-            
+            self.carParameterArray = [NSMutableArray arrayWithArray:array];
         }];
     }
 }
@@ -127,14 +126,6 @@
         [self setDetailItem:@{@"Car":@"0"}];
     }
 }
-
-//-(void)prepareCarBrandInfo
-//{
-//    [[SearchFromDBHandler sharedSearchHandler] getCarBrandInfoFromDataBaseWhere:carId OnSuccess:^(NSDictionary *dic) {
-//        NSLog(@"dic:%@",dic);
-//        carBrandDic = [NSDictionary dictionaryWithDictionary:dic];
-//    }];
-//}
 
 -(void)setCarBrandViewInfo:(NSDictionary*)dataDic
 {
@@ -262,55 +253,33 @@
 
 #pragma mark - CarInfoDataPrepare
 
-//-(void)prepareCarInfoDataSource{
-//    headData = [NSMutableArray arrayWithCapacity:self.carInfoArray.count];
-//    for (NSString* info in kCarInfoCategory) {
-//        [headData addObject:info];
-//    }
-//    
-//    leftTableData = [NSMutableArray arrayWithCapacity:5];
-//    NSMutableArray *one = [NSMutableArray arrayWithCapacity:3];
-//    [one addObject:@"数值"];
-//    [leftTableData addObject:one];
-//    rightTableData = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-//    NSMutableArray *oneR = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-//    for (int i = 0; i < 1; i++) {
-//        NSMutableArray *ary = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
-//        for (int j = 0; j < kCarInfoCategory.count; j++) {
-//            for (Car* car in self.carInfoArray) {
-//                [ary addObject:car.carClass];
-//                [ary addObject:car.size];
-//                [ary addObject:car.topSpeed];
-//                [ary addObject:car.acceleration];
-//                [ary addObject:car.oilConsumption];
-//                [ary addObject:car.wheelBase];
-//                [ary addObject:car.intake];
-//                [ary addObject:car.cylinderType];
-//                [ary addObject:car.cylinderNumber];
-//                [ary addObject:car.reduction];
-//                [ary addObject:car.horsePower];
-//                [ary addObject:car.engine];
-//                [ary addObject:car.power];
-//                [ary addObject:car.torque];
-//                [ary addObject:car.fuelForm];
-//                [ary addObject:car.fuelGrade];
-//                [ary addObject:car.transMission];
-//                [ary addObject:car.gear];
-//                [ary addObject:car.transmissionType];
-//                [ary addObject:car.frontSuspension];
-//                [ary addObject:car.backSuspension];
-//                [ary addObject:car.airBag];
-//                [ary addObject:car.sideAirBag];
-//                [ary addObject:car.absType];
-//                [ary addObject:car.skyLight];
-//                [ary addObject:car.leatherSeat];
-//                [ary addObject:car.seatHeight];
-//            }
-//        }
-//        [oneR addObject:ary];
-//    }
-//    [rightTableData addObject:oneR];
-//}
+-(void)prepareCarInfoDataSource{
+    NSInteger headCount = self.carParameterArray.count;
+    //------添加车名源--------------------------------------
+    headData = [NSMutableArray arrayWithCapacity:headCount];
+    
+    for (NSString* info in self.carParameterArray) {
+        [headData addObject:info];
+    }
+    //------添加参数名源
+    leftTableData = [NSMutableArray arrayWithCapacity:5];
+    NSMutableArray *one = [NSMutableArray arrayWithCapacity:3];
+    [one addObject:@"数值"];
+    [leftTableData addObject:one];
+    //------添加参数值源
+    rightTableData = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+    NSMutableArray *oneR = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+    for (int i = 0; i < 1; i++) {
+        NSMutableArray *ary = [NSMutableArray arrayWithCapacity:kCarInfoCategory.count];
+        for (int j = 0; j < kCarInfoCategory.count; j++) {
+            for (Car* car in self.carInfoArray) {
+     
+            }
+        }
+        [oneR addObject:ary];
+    }
+    [rightTableData addObject:oneR];
+}
 
 //-(void)setCarInfoGridView{
 //    if (xcMultiTableView) {
@@ -326,39 +295,39 @@
 //}
 
 
-//#pragma mark - XCMultiTableViewDataSource
-//
-//- (NSArray *)arrayDataForTopHeaderInTableView:(XCMultiTableView *)tableView {
-//    return [headData copy];
-//}
-//- (NSArray *)arrayDataForLeftHeaderInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
-//    return [leftTableData objectAtIndex:section];
-//}
-//
-//- (NSArray *)arrayDataForContentInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
-//    return [rightTableData objectAtIndex:section];
-//}
-//
-//
-//- (NSUInteger)numberOfSectionsInTableView:(XCMultiTableView *)tableView {
-//    return [leftTableData count];
-//}
-//
-//- (CGFloat)tableView:(XCMultiTableView *)tableView contentTableCellWidth:(NSUInteger)column {
-//    return 100.0f;
-//}
-//
-//- (CGFloat)tableView:(XCMultiTableView *)tableView cellHeightInRow:(NSUInteger)row InSection:(NSUInteger)section {        return 60.0f;
-//}
-//
-//- (UIColor *)tableView:(XCMultiTableView *)tableView bgColorInSection:(NSUInteger)section InRow:(NSUInteger)row InColumn:(NSUInteger)column {
-//    
-//    return [UIColor clearColor];
-//}
-//
-//- (UIColor *)tableView:(XCMultiTableView *)tableView headerBgColorInColumn:(NSUInteger)column {
-//    return [UIColor grayColor];
-//}
+#pragma mark - XCMultiTableViewDataSource
+
+- (NSArray *)arrayDataForTopHeaderInTableView:(XCMultiTableView *)tableView {
+    return [headData copy];
+}
+- (NSArray *)arrayDataForLeftHeaderInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
+    return [leftTableData objectAtIndex:section];
+}
+
+- (NSArray *)arrayDataForContentInTableView:(XCMultiTableView *)tableView InSection:(NSUInteger)section {
+    return [rightTableData objectAtIndex:section];
+}
+
+
+- (NSUInteger)numberOfSectionsInTableView:(XCMultiTableView *)tableView {
+    return [leftTableData count];
+}
+
+- (CGFloat)tableView:(XCMultiTableView *)tableView contentTableCellWidth:(NSUInteger)column {
+    return 100.0f;
+}
+
+- (CGFloat)tableView:(XCMultiTableView *)tableView cellHeightInRow:(NSUInteger)row InSection:(NSUInteger)section {        return 60.0f;
+}
+
+- (UIColor *)tableView:(XCMultiTableView *)tableView bgColorInSection:(NSUInteger)section InRow:(NSUInteger)row InColumn:(NSUInteger)column {
+    
+    return [UIColor clearColor];
+}
+
+- (UIColor *)tableView:(XCMultiTableView *)tableView headerBgColorInColumn:(NSUInteger)column {
+    return [UIColor grayColor];
+}
 
 //#pragma mark -  CollectionViewDataPrepre
 //
