@@ -26,11 +26,17 @@
 {
     XCMultiTableView * xcMultiTableView;
     NSString* carId;
+    NSString* carName;
     NSMutableArray *headData;
     NSMutableArray *leftTableData;
     NSMutableArray *rightTableData;
     CAGradientLayer *_gradientLayer;
 }
+@property(strong,nonatomic)IBOutlet UIView* carBrandView;
+@property(strong,nonatomic)IBOutlet UILabel* carNameLabel;
+@property(strong,nonatomic)IBOutlet UILabel* carPriceLabel;
+@property(strong,nonatomic)IBOutlet UILabel* manufactureLabel;
+@property(strong,nonatomic)IBOutlet UILabel* carClassLabel;
 @property(strong,nonatomic)IBOutlet UIView* carColorView;
 @property(strong,nonatomic)IBOutlet UIImageView* carColorBG;
 @property(strong,nonatomic)IBOutlet UIView* carInfoView;
@@ -55,26 +61,36 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    
-    if (self.detailItem) {
+    NSDictionary* detailDic = (NSDictionary*)_detailItem;
+    NSString* detailKey = [detailDic allKeys][0];
+    NSString* detailValue = [detailDic allValues][0];
+    if (self.detailItem && [detailKey isEqualToString:@"Car"]) {
         carId = [[NSString alloc] init];
+        carName = [[NSString alloc] init];
         self.imageArray = [[NSMutableArray alloc] init];
-
+        
 //        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //        hud.yOffset = 27;
-        
 //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // 耗时的操作
-            [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:[self.detailItem description] OnSuccess:^(NSArray *array) {
+            [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:detailValue OnSuccess:^(NSArray *array) {
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
 //                [self prepareCarInfoDataSource];
 //                [self prepareCarImageDataSource:0];
+                [[SearchFromDBHandler sharedSearchHandler] getCarBrandInfoFromDataBaseWhere:carId OnSuccess:^(NSDictionary *dic) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self setMainCarImageView:0];
+                        [self setColorSelectedView];
+                        [self setCarBrandViewInfo:dic];
+                    });
+                }];
+                [[SearchFromDBHandler sharedSearchHandler] getCarParameterFromDataBaseWhere:@"Car" Parameter:detailValue onSuccess:^(NSArray *array) {
+                    NSLog(@"%@",array);
+                }];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self setMainCarImageView:0];
-                    [self setColorSelectedView];
-                });
+                
             }];
 //            dispatch_async(dispatch_get_main_queue(), ^{
                 // 更新界面
@@ -86,6 +102,14 @@
 //                [self setCarImageSectionView];
 //            });
 //        });
+    }else if (self.detailItem && [detailKey isEqualToString:@"Menu"]){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setCarBrandViewInfo:detailDic];
+        });
+        
+        [[SearchFromDBHandler sharedSearchHandler] getCarParameterFromDataBaseWhere:@"Menu" Parameter:detailValue onSuccess:^(NSArray *array) {
+            
+        }];
     }
 }
 
@@ -96,11 +120,37 @@
     self.infoView.highlighted = YES;
     self.mainCarImg.contentMode = UIViewContentModeScaleAspectFill;
     [self setViewBackgroundShadow];
-    if ([[_detailItem description] isEqualToString:@"0"]|| !_detailItem) {
-        [self setDetailItem:@"0"];
+    NSDictionary* detailDic = (NSDictionary*)_detailItem;
+    NSString* detailKey = [detailDic allKeys][0];
+    NSString* detailValue = [detailDic allValues][0];
+    if (([detailKey isEqualToString:@"Car"] && [detailValue isEqualToString:@"0"]) || !_detailItem) {
+        [self setDetailItem:@{@"Car":@"0"}];
     }
 }
 
+//-(void)prepareCarBrandInfo
+//{
+//    [[SearchFromDBHandler sharedSearchHandler] getCarBrandInfoFromDataBaseWhere:carId OnSuccess:^(NSDictionary *dic) {
+//        NSLog(@"dic:%@",dic);
+//        carBrandDic = [NSDictionary dictionaryWithDictionary:dic];
+//    }];
+//}
+
+-(void)setCarBrandViewInfo:(NSDictionary*)dataDic
+{
+    NSDictionary* detailDic = (NSDictionary*)_detailItem;
+    NSString* detailKey = [detailDic allKeys][0];
+    NSString* detailValue = [detailDic allValues][0];
+    if ([detailKey isEqualToString:@"Car"]) {
+        self.carPriceLabel.text =[NSString stringWithFormat:@"%@:%@",kCarBrand[0],[dataDic objectForKey:kCarBrand[0]]];
+        self.carClassLabel.text = [NSString stringWithFormat:@"%@:%@",kCarBrand[2],[dataDic objectForKey:kCarBrand[2]]];
+        self.manufactureLabel.text = [NSString stringWithFormat:@"%@:%@",kCarBrand[1],[dataDic objectForKey:kCarBrand[1]]];
+        self.carNameLabel.text = carName;
+    }else{
+        self.carNameLabel.text = detailValue;
+    }
+    
+}
 
 -(void)setColorSelectedView
 {
@@ -174,16 +224,15 @@
 }
 
 - (void)changeColor:(UIButton *)sender {
-    NSLog(@"Button tapped, tag: %ld", (long)sender.tag);
     [self setMainCarImageView:sender.tag];
 //    [self prepareCarImageDataSource:sender.tag];
-
 }
 
 -(void)setViewBackgroundShadow
 {
     [self.carColorView makeInsetShadowWithRadius:10.0 Color:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8] Directions:[NSArray arrayWithObjects:@"left", nil]];
     [self.carInfoView makeInsetShadowWithRadius:10.0 Color:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8] Directions:[NSArray arrayWithObjects:@"left", nil]];
+    [self.carBrandView makeInsetShadowWithRadius:10.0 Color:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8] Directions:[NSArray arrayWithObjects:@"left", nil]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -195,6 +244,7 @@
 {
     for (Car* car in self.carInfoArray) {
         carId = car.carId;
+        carName = car.carName;
     }
 }
 
@@ -206,7 +256,6 @@
         [completeurl appendString:kImageFloder[4]];
         [completeurl appendString:@"/"];
         [completeurl appendString:[[NSString seperateStringToArray:car.mainImageUrl] objectAtIndex:colorIndex]];
-        NSLog(@"%@",completeurl);
         [self.mainCarImg sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 }
@@ -262,7 +311,7 @@
 //    }
 //    [rightTableData addObject:oneR];
 //}
-//
+
 //-(void)setCarInfoGridView{
 //    if (xcMultiTableView) {
 //        [xcMultiTableView removeFromSuperview];
