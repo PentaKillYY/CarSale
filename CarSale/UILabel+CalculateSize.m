@@ -13,7 +13,7 @@
 {
     CGSize titleSize;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:11], NSParagraphStyleAttributeName:paragraphStyle.copy};
     titleSize = [contentText boundingRectWithSize:CGSizeMake(80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     return titleSize;

@@ -113,6 +113,9 @@ typedef NS_ENUM(NSUInteger, TableColumnSortType) {
     
         leftHeaderTableView.dataSource = self;
         leftHeaderTableView.delegate = self;
+        leftHeaderTableView.showsHorizontalScrollIndicator = NO;
+        leftHeaderTableView.showsVerticalScrollIndicator = NO;
+
         leftHeaderTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         leftHeaderTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         leftHeaderTableView.backgroundColor = [UIColor clearColor];
@@ -131,7 +134,7 @@ typedef NS_ENUM(NSUInteger, TableColumnSortType) {
         contentTableView = [[UITableView alloc] initWithFrame:contentScrollView.bounds];
         contentTableView.dataSource = self;
         contentTableView.delegate = self;
-        contentTableView.scrollEnabled = NO;
+        contentTableView.scrollEnabled = YES;
         contentTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         contentTableView.backgroundColor = [UIColor clearColor];
@@ -264,9 +267,9 @@ typedef NS_ENUM(NSUInteger, TableColumnSortType) {
 //            }
 //            
 //            
-//            UITapGestureRecognizer *contentHeaderGecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentHeaderTap:)];
-//            
-//            [subView addGestureRecognizer:contentHeaderGecognizer];
+////            UITapGestureRecognizer *contentHeaderGecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentHeaderTap:)];
+////            
+////            [subView addGestureRecognizer:contentHeaderGecognizer];
 //            
 //            [view addSubview:subView];
 //        }
@@ -461,10 +464,17 @@ typedef NS_ENUM(NSUInteger, TableColumnSortType) {
     
     UILabel *label =  [[UILabel alloc] initWithFrame:CGRectZero];
     label.text = [[leftHeaderDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [label sizeToFit];
+
     
     label.font = [UIFont fontWithName:@"Helvetica" size:11];
-    label.center = CGPointMake(leftHeaderWidth / 2.0f, cellH / 2.0f);
+    
+    [label setNumberOfLines:0];
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    CGSize labelSize = [label calculateSize:[[leftHeaderDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    label.frame= CGRectMake((100-labelSize.width)/2.0f, (cellH-labelSize.height)/2.0f, labelSize.width, labelSize.height);
+
+
     
     UIColor *color = [self bgColorInSection:indexPath.section InRow:indexPath.row InColumn:-1];
     view.backgroundColor = color;
@@ -508,12 +518,13 @@ typedef NS_ENUM(NSUInteger, TableColumnSortType) {
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.text = [NSString stringWithFormat:@"%@", [ary objectAtIndex:i]];
+        NSLog(@"%@",label.text);
         label.font = [UIFont fontWithName:@"Helvetica" size:11];
         [label setNumberOfLines:0];
-        label.lineBreakMode = NSLineBreakByWordWrapping;
+        label.lineBreakMode = NSLineBreakByCharWrapping;
         
         CGSize labelSize = [label calculateSize:[NSString stringWithFormat:@"%@", [ary objectAtIndex:i]]];
-        label.frame= CGRectMake((cellW-labelSize.width)/2.0f, (cellH-labelSize.height)/2.0f, labelSize.width, labelSize.height);
+        label.frame= CGRectMake((cellW-labelSize.width)/2.0f, (cellH-labelSize.height)/2.0f, labelSize.width-5, labelSize.height);
         
         UIColor *color = [self bgColorInSection:indexPath.section InRow:indexPath.row InColumn:i];
         
