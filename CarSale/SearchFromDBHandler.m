@@ -37,13 +37,6 @@
     }];
 }
 
-//-(void)getDefaultCarInfoFromDatabaseOnSuccess:(SearchSuccess)success{
-//
-//    [[DataBaseHelper sharedDatabaseHandler] selectDefaultCarFromDataBaseOnSuccess:^(NSArray *array) {
-//        success(array);
-//    }];
-//}
-
 -(void)getCarBrandInfoFromDataBaseWhere:(NSString*)carId OnSuccess:(DicSearchSuccess)success
 {
     NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
@@ -61,37 +54,76 @@
 
 -(void)getCarParameterFromDataBaseWhere:(NSString*)isMenu Parameter:(NSString*)parameter onSuccess:(SearchSuccess)success{
     NSMutableArray* SuccessArray = [[NSMutableArray alloc] init];
-    if ([isMenu isEqualToString:@"Menu"]) {
-        [[DataBaseHelper sharedDatabaseHandler] selectCarIdFromDataBaseWhere:parameter onSuccess:^(NSArray *array) {
-            for (NSString* string in array) {
-                NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-                [[DataBaseHelper sharedDatabaseHandler] selectBasicCarInfoFromDataBase:string onSuccess:^(NSDictionary *dictionary) {
-                    for (NSString* string in [dictionary allKeys]) {
-                        [[DataBaseHelper sharedDatabaseHandler] selectParameterNameFromDataBase:string onSuccess:^(NSArray *array) {
-                            [dic setObject:[dictionary objectForKey:string] forKey:array[0]];
+    if ([isMenu isEqualToString:@"Car"]) {
+        [[DataBaseHelper sharedDatabaseHandler] selectCarIdFromCarWhere:parameter onSuccess:^(NSArray *array) {
+            for (NSString* carId in array) {
+                NSMutableDictionary* dic  = [[NSMutableDictionary alloc] init];
+                [[DataBaseHelper sharedDatabaseHandler] selectCarInfoFromDataBaseWhere:carId onSuccess:^(NSArray *array) {
+                    for (Car* car in array) {
+                        [dic setObject:car.carName forKey:@"CarName"];
+                        [[DataBaseHelper sharedDatabaseHandler] selectParameterMenuFromDataBaseOnSuccess:^(NSArray *array) {
+                            NSMutableArray* parameterArray = [[NSMutableArray alloc] init];
+                            for (NSDictionary* parameterDic in array) {
+                                NSMutableDictionary* tempDic = [[NSMutableDictionary alloc] init];
+                                
+                                for (NSString* string in [parameterDic allKeys]) {
+                                    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+                                    for (int i = 0; i <  [[[parameterDic allValues] objectAtIndex:0] count]; i++) {
+                                        [[DataBaseHelper sharedDatabaseHandler] selectCarParameterFromDataBaseWhere:car.carId MenuText:[[[parameterDic allValues] objectAtIndex:0] objectAtIndex:i] onSuccess:^(NSArray *array) {
+                                            [dic setObject:array[0] forKey:[[[parameterDic allValues] objectAtIndex:0] objectAtIndex:i]];
+                                        }];
+                                    }
+                                    [tempDic setObject:dic forKey:string];
+                                }
+                                
+                                [parameterArray addObject:tempDic];
+                            }
+                            [dic setObject:parameterArray forKey:@"Parameter"];
                         }];
+                        [SuccessArray addObject:dic];
                     }
+                    
                 }];
-                [SuccessArray addObject:dic];
+                
             }
             success(SuccessArray);
-        }];
-    }else{
-        [[DataBaseHelper sharedDatabaseHandler] selectCarFromDataBaseWhere:parameter OnSuccess:^(NSArray *array) {
-            for (Car* car in array) {
-                NSMutableDictionary * dic = [[NSMutableDictionary alloc] init];
-               [[DataBaseHelper sharedDatabaseHandler] selectBasicCarInfoFromDataBase:car.carId onSuccess:^(NSDictionary *dictionary) {
-                   for (NSString* string in [dictionary allKeys]) {
-                       [[DataBaseHelper sharedDatabaseHandler] selectParameterNameFromDataBase:string onSuccess:^(NSArray *array) {
-                           [dic setObject:[dictionary objectForKey:string] forKey:array[0]];
-                       }];
-                   }
-               }];
-             [SuccessArray addObject:dic];
-            }
-            success(SuccessArray);
+
         }];
         
+    }else{
+        [[DataBaseHelper sharedDatabaseHandler] selectCarIdFromDataBaseWhere:parameter onSuccess:^(NSArray *array) {
+            for (NSString* carId in array) {
+                NSMutableDictionary* dic  = [[NSMutableDictionary alloc] init];
+                [[DataBaseHelper sharedDatabaseHandler] selectCarInfoFromDataBaseWhere:carId onSuccess:^(NSArray *array) {
+                    for (Car* car in array) {
+                        [dic setObject:car.carName forKey:@"CarName"];
+                        [[DataBaseHelper sharedDatabaseHandler] selectParameterMenuFromDataBaseOnSuccess:^(NSArray *array) {
+                            NSMutableArray* parameterArray = [[NSMutableArray alloc] init];
+                            for (NSDictionary* parameterDic in array) {
+                                NSMutableDictionary* tempDic = [[NSMutableDictionary alloc] init];
+                                
+                                for (NSString* string in [parameterDic allKeys]) {
+                                    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+                                    for (int i = 0; i <  [[[parameterDic allValues] objectAtIndex:0] count]; i++) {
+                                        [[DataBaseHelper sharedDatabaseHandler] selectCarParameterFromDataBaseWhere:car.carId MenuText:[[[parameterDic allValues] objectAtIndex:0] objectAtIndex:i] onSuccess:^(NSArray *array) {
+                                            [dic setObject:array[0] forKey:[[[parameterDic allValues] objectAtIndex:0] objectAtIndex:i]];
+                                        }];
+                                    }
+                                    [tempDic setObject:dic forKey:string];
+                                }
+                                
+                                [parameterArray addObject:tempDic];
+                            }
+                            [dic setObject:parameterArray forKey:@"Parameter"];
+                        }];
+                        [SuccessArray addObject:dic];
+                    }
+                    
+                }];
+                
+            }
+            success(SuccessArray);
+        }];
     }
 }
 @end
