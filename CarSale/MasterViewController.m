@@ -20,8 +20,11 @@
 #import <AFNetworkReachabilityManager.h>
 #import "DXSemiViewControllerCategory.h"
 #import "DetailViewController.h"
+#import "AppMarco.h"
 @interface MasterViewController ()<UITableViewDataSource,UITableViewDelegate,ContentSlected>
-
+{
+    NSInteger  eggCount;
+}
 @property NSMutableArray *objects;
 @property NSMutableArray* rowOfSectionArr;
 @property NSMutableArray* openedInSectionArr;
@@ -241,7 +244,13 @@
             if (isLatest) {
                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.splitViewController.view animated:YES];
                 hud.mode = MBProgressHUDModeText;
-                hud.labelText = @"已经是最新版本";
+                eggCount++;
+                if (eggCount == 15) {
+                    hud.labelText = EGGS;
+                }else{
+                    hud.labelText = @"已经是最新版本";
+                }
+                
                 hud.yOffset = 27.0f;
                 hud.xOffset = 150.f;
                 [hud hide:YES afterDelay:2];
