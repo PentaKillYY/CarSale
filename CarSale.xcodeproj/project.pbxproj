@@ -58,6 +58,8 @@
 		09A208101AD6445800A152F8 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A2080C1AD6445800A152F8 /* info@2x.png */; };
 		09A208111AD6445800A152F8 /* infoSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A2080D1AD6445800A152F8 /* infoSelected.png */; };
 		09A208121AD6445800A152F8 /* infoSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A2080E1AD6445800A152F8 /* infoSelected@2x.png */; };
+		09AD4D6D1AEDC6480058A9D4 /* MoreCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AD4D6C1AEDC6480058A9D4 /* MoreCarInfoViewController.m */; };
+		09AD4D701AEDD27D0058A9D4 /* CarImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AD4D6F1AEDD27D0058A9D4 /* CarImageViewController.m */; };
 		09AF5CF71ACB9E8B00BA2BC2 /* MainSectionview.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AF5CF61ACB9E8B00BA2BC2 /* MainSectionview.m */; };
 		09AF5CF91ACB9EC100BA2BC2 /* MainSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09AF5CF81ACB9EC100BA2BC2 /* MainSectionView.xib */; };
 		09AF5D361ACBF28500BA2BC2 /* SearchFromDBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AF5D351ACBF28500BA2BC2 /* SearchFromDBHandler.m */; };
@@ -172,6 +174,10 @@
 		09A2080C1AD6445800A152F8 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		09A2080D1AD6445800A152F8 /* infoSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoSelected.png; sourceTree = "<group>"; };
 		09A2080E1AD6445800A152F8 /* infoSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoSelected@2x.png"; sourceTree = "<group>"; };
+		09AD4D6B1AEDC6480058A9D4 /* MoreCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCarInfoViewController.h; sourceTree = "<group>"; };
+		09AD4D6C1AEDC6480058A9D4 /* MoreCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCarInfoViewController.m; sourceTree = "<group>"; };
+		09AD4D6E1AEDD27D0058A9D4 /* CarImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarImageViewController.h; sourceTree = "<group>"; };
+		09AD4D6F1AEDD27D0058A9D4 /* CarImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarImageViewController.m; sourceTree = "<group>"; };
 		09AF5CF51ACB9E8B00BA2BC2 /* MainSectionview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSectionview.h; sourceTree = "<group>"; };
 		09AF5CF61ACB9E8B00BA2BC2 /* MainSectionview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSectionview.m; sourceTree = "<group>"; };
 		09AF5CF81ACB9EC100BA2BC2 /* MainSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainSectionView.xib; sourceTree = "<group>"; };
@@ -448,6 +454,10 @@
 			children = (
 				099B5EEA1ABA5E2A00DAA888 /* DetailViewController.h */,
 				099B5EEB1ABA5E2A00DAA888 /* DetailViewController.m */,
+				09AD4D6B1AEDC6480058A9D4 /* MoreCarInfoViewController.h */,
+				09AD4D6C1AEDC6480058A9D4 /* MoreCarInfoViewController.m */,
+				09AD4D6E1AEDD27D0058A9D4 /* CarImageViewController.h */,
+				09AD4D6F1AEDD27D0058A9D4 /* CarImageViewController.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -797,9 +807,11 @@
 				09AF5D3F1ACD47D600BA2BC2 /* SecondMasterTableViewController.m in Sources */,
 				09A2080A1AD62A5400A152F8 /* UIView+Shadow.m in Sources */,
 				099B5EE31ABA5E2A00DAA888 /* main.m in Sources */,
+				09AD4D701AEDD27D0058A9D4 /* CarImageViewController.m in Sources */,
 				09A208071AD6119300A152F8 /* MRImgShowView.m in Sources */,
 				0906D3931AD7743A0079132B /* XCMultiSortTableView.m in Sources */,
 				09F858421AC3A14C0019806F /* MenuRequest.m in Sources */,
+				09AD4D6D1AEDC6480058A9D4 /* MoreCarInfoViewController.m in Sources */,
 				099679731ACA9834004B7121 /* NSString+Array.m in Sources */,
 				09F858481AC3D78B0019806F /* Menu.m in Sources */,
 				0906D3921AD7743A0079132B /* UIView+XCMultiSortTableView.m in Sources */,
