@@ -197,16 +197,47 @@
 
 -(void)selectCarIdFromDataBaseWhere:(NSString*)menuText onSuccess:(Success)success{
     [self initializeDataBase];
-    NSArray* menuIdArray = [menuHelper search:[Menu class] column:@"MenuId" where:@{@"MenuText":menuText} orderBy:nil offset:0 count:1000];
-    NSMutableArray* carArray = [[NSMutableArray alloc] init];
-    [self selectAllImageFromDatabaseOnSuccess:^(NSArray *array) {
-        for (Car* car in array) {
-            if ([car.menuId rangeOfString:menuIdArray[0]].location != NSNotFound) {
+    
+    if ([menuText isEqualToString:@"0"]){
+        NSMutableArray* carArray = [[NSMutableArray alloc] init];
+        [carHelper search:[Car class] where:@{@"NumberId":@"0"} orderBy:nil offset:0 count:1000 callback:^(NSMutableArray *array) {
+            for (Car* car in array) {
                 [carArray addObject:car.carId];
             }
-        }
-        success((NSArray*)carArray);
-    }];
+            success((NSArray*)carArray);
+        }];
+    
+    }else{
+        NSArray* menuIdArray = [menuHelper search:[Menu class] column:@"MenuId" where:@{@"MenuText":menuText} orderBy:nil offset:0 count:1000];
+        NSMutableArray* carArray = [[NSMutableArray alloc] init];
+        [self selectAllImageFromDatabaseOnSuccess:^(NSArray *array) {
+            for (Car* car in array) {
+                if ([car.menuId rangeOfString:menuIdArray[0]].location != NSNotFound) {
+                    [carArray addObject:car.carId];
+                }
+            }
+            success((NSArray*)carArray);
+        }];
+    
+    }
+  
+}
+
+
+-(void)selectCarIdFromCarWhere:(NSString*)menuText onSuccess:(Success)success{
+    if ([menuText isEqualToString:@"0"]){
+        NSMutableArray* carArray = [[NSMutableArray alloc] init];
+        [carHelper search:[Car class] where:@{@"NumberId":@"0"} orderBy:nil offset:0 count:1000 callback:^(NSMutableArray *array) {
+            for (Car* car in array) {
+                [carArray addObject:car.carId];
+            }
+            success((NSArray*)carArray);
+        }];
+    }else{
+    
+       NSArray* carArray= [carHelper search:[Car class] column:@"CarId" where:@{@"CarName":menuText} orderBy:nil offset:0 count:10000];
+        success(carArray);
+}
 }
 
 -(void)selectBasicCarInfoFromDataBase:(NSString*)carId onSuccess:(SuccessDic)success{
@@ -225,5 +256,39 @@
     [self initializeDataBase];
     NSArray* array = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuText" where:@{@"MenuId":menuId} orderBy:nil offset:0 count:10000];
     success(array);
+}
+
+-(void)selectCarInfoFromDataBaseWhere:(NSString*)carId onSuccess:(Success)success{
+    [self initializeDataBase];
+    NSArray* array = [carHelper search:[Car class] where:@{@"CarId":carId} orderBy:nil offset:0 count:10000];
+    success(array);
+}
+
+-(void)selectParameterMenuFromDataBaseOnSuccess:(Success)success{
+    [self initializeDataBase];
+    NSMutableArray* parameterMenuArray = [[NSMutableArray alloc] init];
+    NSArray* parameterRootArray = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuId" where:@{@"MenuText":@"根节点"} orderBy:nil offset:0 count:10000];
+    for (NSString* menuId in parameterRootArray) {
+        
+        NSArray* parameterRootText = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuText" where:@{@"PerentId":menuId} orderBy:nil offset:0 count:10000];
+        for (NSString* rootText in parameterRootText) {
+            NSArray* parameterRootMenuId = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuId" where:@{@"MenuText":rootText} orderBy:nil offset:0 count:10000];
+             NSArray* ParameterMenuArray = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuText" where:@{@"PerentId":parameterRootMenuId[0]} orderBy:nil offset:0 count:10000];
+            NSMutableDictionary* parameterDic = [[NSMutableDictionary alloc] init];
+            [parameterDic setObject:ParameterMenuArray forKey:rootText];
+            [parameterMenuArray addObject:parameterDic];
+        }
+    }
+    success(parameterMenuArray);
+}
+
+-(void)selectCarParameterFromDataBaseWhere:(NSString*)carId MenuText:(NSString*)menuText onSuccess:(Success)success
+{
+    [self initializeDataBase];
+    NSArray* menuIdArray = [parameterMenuHelper search:[ParameterMenu class] column:@"MenuId" where:@{@"MenuText":menuText} orderBy:nil offset:0 count:10000];
+    for (NSString* menuId in menuIdArray) {
+        NSArray* parameterTextArray = [carParameterHelper search:[CarParameter class] column:@"ParameterText" where:@{@"CarId":carId,@"MenuId":menuId} orderBy:nil offset:0 count:10000];
+        success(parameterTextArray);
+    }
 }
 @end
