@@ -40,6 +40,8 @@
 		098CCF6B1AC4F40700D07E6D /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098CCF6A1AC4F40700D07E6D /* LaunchViewController.m */; };
 		098CCF701AC52D3400D07E6D /* UpdateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 098CCF6F1AC52D3400D07E6D /* UpdateHandler.m */; };
 		098CCF731AC53ABC00D07E6D /* VersionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 098CCF721AC53ABC00D07E6D /* VersionRequest.m */; };
+		098EC0801AEF3101005D60C6 /* PopContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EC07F1AEF3101005D60C6 /* PopContentViewController.m */; };
+		098EC0831AEF3420005D60C6 /* CarImageCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098EC0821AEF3420005D60C6 /* CarImageCollectionReusableView.m */; };
 		0996796C1ACA797C004B7121 /* DownLoadImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996796B1ACA797C004B7121 /* DownLoadImageHandler.m */; };
 		099679701ACA9105004B7121 /* ImageDownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 0996796F1ACA9105004B7121 /* ImageDownLoad.m */; };
 		099679731ACA9834004B7121 /* NSString+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 099679721ACA9834004B7121 /* NSString+Array.m */; };
@@ -142,6 +144,10 @@
 		098CCF6F1AC52D3400D07E6D /* UpdateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateHandler.m; sourceTree = "<group>"; };
 		098CCF711AC53ABC00D07E6D /* VersionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionRequest.h; sourceTree = "<group>"; };
 		098CCF721AC53ABC00D07E6D /* VersionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionRequest.m; sourceTree = "<group>"; };
+		098EC07E1AEF3101005D60C6 /* PopContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopContentViewController.h; sourceTree = "<group>"; };
+		098EC07F1AEF3101005D60C6 /* PopContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopContentViewController.m; sourceTree = "<group>"; };
+		098EC0811AEF3420005D60C6 /* CarImageCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarImageCollectionReusableView.h; sourceTree = "<group>"; };
+		098EC0821AEF3420005D60C6 /* CarImageCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarImageCollectionReusableView.m; sourceTree = "<group>"; };
 		0996796A1ACA797C004B7121 /* DownLoadImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadImageHandler.h; sourceTree = "<group>"; };
 		0996796B1ACA797C004B7121 /* DownLoadImageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadImageHandler.m; sourceTree = "<group>"; };
 		0996796E1ACA9105004B7121 /* ImageDownLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownLoad.h; sourceTree = "<group>"; };
@@ -272,6 +278,8 @@
 				099BF0D01ADF5CD200E9AE58 /* AllCollectionReusableView.m */,
 				098C6CDD1AD4FEB5008511AA /* RecipeCollectionHeaderView.h */,
 				098C6CDE1AD4FEB5008511AA /* RecipeCollectionHeaderView.m */,
+				098EC0811AEF3420005D60C6 /* CarImageCollectionReusableView.h */,
+				098EC0821AEF3420005D60C6 /* CarImageCollectionReusableView.m */,
 				098C6CE01AD51662008511AA /* CollectionViewCell.h */,
 				098C6CE11AD51662008511AA /* CollectionViewCell.m */,
 				09C5C1251ADDF6690021AB0E /* ImageGalleryCell.h */,
@@ -458,6 +466,8 @@
 				09AD4D6C1AEDC6480058A9D4 /* MoreCarInfoViewController.m */,
 				09AD4D6E1AEDD27D0058A9D4 /* CarImageViewController.h */,
 				09AD4D6F1AEDD27D0058A9D4 /* CarImageViewController.m */,
+				098EC07E1AEF3101005D60C6 /* PopContentViewController.h */,
+				098EC07F1AEF3101005D60C6 /* PopContentViewController.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -796,7 +806,9 @@
 				09AF5CF71ACB9E8B00BA2BC2 /* MainSectionview.m in Sources */,
 				09AF81211AC92528006CBF63 /* DataBaseHelper.m in Sources */,
 				090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */,
+				098EC0801AEF3101005D60C6 /* PopContentViewController.m in Sources */,
 				098C6CDF1AD4FEB5008511AA /* RecipeCollectionHeaderView.m in Sources */,
+				098EC0831AEF3420005D60C6 /* CarImageCollectionReusableView.m in Sources */,
 				09C5C1271ADDF6690021AB0E /* ImageGalleryCell.m in Sources */,
 				098CCF6B1AC4F40700D07E6D /* LaunchViewController.m in Sources */,
 				09F858451AC3AFA00019806F /* CarRequest.m in Sources */,

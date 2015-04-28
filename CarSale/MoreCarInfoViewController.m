@@ -36,6 +36,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 更新界面
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                self.title = [self.carDic objectForKey:@"carname"];
                 [self.tableView reloadData];
                 [self setCarInfoGridView];
             });
@@ -46,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     
     // 添加导航栏退回按钮
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
