@@ -29,6 +29,7 @@
     XCMultiTableView * xcMultiTableView;
     NSString* carId;
     NSString* carName;
+    NSArray* carColorArray;
     NSMutableArray *headData;
     NSMutableArray *leftTableData;
     NSMutableArray *rightTableData;
@@ -213,6 +214,7 @@
     for (Car* car in self.carInfoArray) {
         
         colorRGBArray = [NSArray arrayWithArray:[NSString seperateStringToArray:car.colorRGB]] ;
+        carColorArray = [NSArray arrayWithArray:[NSString seperateStringToArray:car.color]];
     }
     for (NSString *hexColor in colorRGBArray) {
 
@@ -400,8 +402,8 @@
         }
         [self.imageDic setObject:tempforeImage forKey:@"ForeImage"];
         [self.imageDic setObject:tempbackImage forKey:@"BackImage"];
-        [self.imageDic setObject:tempinnerImage forKey:@"InnerImage"];
         [self.imageDic setObject:tempsideImage forKey:@"SideImage"];
+        [self.imageDic setObject:tempinnerImage forKey:@"InnerImage"];
     }
 }
 //
@@ -512,7 +514,7 @@
     CarImageViewController* carImage = [self.storyboard  instantiateViewControllerWithIdentifier:@"CarImage"];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:carImage];
 //    NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"imageArray":self.imageArray};
-    NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"carimage":self.imageDic};
+    NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"carimage":self.imageDic,@"carcolor":carColorArray};
     [carImage setDetailItem:cardic];
     [self presentViewController:nav animated:YES completion:nil];
 }
