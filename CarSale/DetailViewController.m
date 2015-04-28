@@ -71,13 +71,14 @@
     NSDictionary* detailDic = (NSDictionary*)_detailItem;
     NSString* detailKey = [detailDic allKeys][0];
     NSString* detailValue = [detailDic allValues][0];
+    self.imageDic = [[NSMutableDictionary alloc] init];
+    self.infoDic = [[NSMutableDictionary alloc] init];
     if (self.detailItem && [detailKey isEqualToString:@"Car"]) {
         self.imageButton.hidden = NO;
         carId = [[NSString alloc] init];
         carName = [[NSString alloc] init];
 //        self.imageArray = [[NSMutableArray alloc] init];
-        self.imageDic = [[NSMutableDictionary alloc] init];
-        self.infoDic = [[NSMutableDictionary alloc] init];
+        
 //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // 耗时的操作
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:detailValue OnSuccess:^(NSArray *array) {
@@ -92,9 +93,7 @@
                         [self setMainCarImageView:0];
                         [self setColorSelectedView];
                         [self setCarBrandViewInfo:dic];
-                        
                     });
-                    
                 }];
                 
                 [[SearchFromDBHandler sharedSearchHandler] getCarParameterFromDataBaseWhere:@"Car" Parameter:detailValue onSuccess:^(NSArray *array) {
@@ -119,8 +118,9 @@
 //            });
 //        });
     }else if (self.detailItem && [detailKey isEqualToString:@"Menu"]){
-        self.imageButton.hidden = YES;
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageButton.hidden = YES;
             [self setCarBrandViewInfo:detailDic];
         });
         
@@ -503,7 +503,7 @@
 -(IBAction)showMoreCarInfo:(id)sender{
     MoreCarInfoViewController* moreCarInfo = [self.storyboard instantiateViewControllerWithIdentifier:@"MoreCarInfo"];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:moreCarInfo];
-    NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"carinfo":self.infoDic};
+    NSDictionary* cardic = @{@"carname":self.carNameLabel.text,@"carinfo":self.infoDic};
     [moreCarInfo setDetailItem:cardic];
     [self presentViewController:nav animated:YES completion:nil];
 }
