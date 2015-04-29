@@ -117,4 +117,4 @@ description:__VA_ARGS__];                             \
 
 #define MARK    NSLog(@"\nMARK: %s, %d", __PRETTY_FUNCTION__, __LINE__)
 
-#define EGGS @"SB经理,卡我离职,特留彩蛋,呵呵不谢! PS:千万不要得罪程序员!"
+#define EGGS @"特留彩蛋,呵呵不谢! PS:千万不要得罪程序员!"
