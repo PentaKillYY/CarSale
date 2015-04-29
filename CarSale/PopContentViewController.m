@@ -17,8 +17,10 @@
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
         // Update the view.
-        self.contentArray = [NSMutableArray arrayWithArray:(NSArray*)_detailItem];
-        self.view.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.x, 200, self.contentArray.count*self.tableView.rowHeight);
+        NSDictionary* dic = (NSDictionary*)_detailItem;
+        self.contentArray = [NSMutableArray arrayWithArray:[dic objectForKey:@"Content"]];
+        self.idString = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ContentId"]];
+        self.view.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.x, 200, (self.contentArray.count+1)*self.tableView.rowHeight);
     }
 }
 
@@ -27,7 +29,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setExtraCellLineHidden];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +38,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.contentArray.count;
+    return (self.contentArray.count+1);
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -51,14 +52,25 @@
             [view removeFromSuperview];
         }
     }
-    cell.textLabel.text = [self.contentArray objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        if ([self.idString isEqualToString:@"color"]) {
+            cell.textLabel.text = @"全部颜色";
+        }else{
+            cell.textLabel.text = @"全部类型";
+        }
+        
+    }else{
+    cell.textLabel.text = [self.contentArray objectAtIndex:indexPath.row-1];
+    }
+    
     return cell;
 
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate cellDidSelect:[self.contentArray objectAtIndex:indexPath.row]];
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self.delegate cellDidSelect:cell.textLabel.text Content:self.idString];
 }
 
 - (void)setExtraCellLineHidden{

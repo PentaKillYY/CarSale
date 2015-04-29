@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol DidSelectDelegate <NSObject>
 
--(void)cellDidSelect:(NSString*)cellText;
+-(void)cellDidSelect:(NSString*)cellText Content:(NSString*)content;
 
 @end
 
