@@ -17,7 +17,6 @@ typedef void(^DicSearchSuccess)(NSDictionary* dic);
 -(void)getMenuFromDataBase:(SearchSuccess)success;
 -(void)getCarNameFromDataBaseWhere:(NSString*)menuText OnSuccess:(SearchSuccess)success;
 -(void)getCarInfoDataBaseWhere:(NSString*)menuText OnSuccess:(SearchSuccess)success;
-//-(void)getDefaultCarInfoFromDatabaseOnSuccess:(SearchSuccess)success;
 -(void)getCarBrandInfoFromDataBaseWhere:(NSString*)carId OnSuccess:(DicSearchSuccess)success;
 -(void)getCarParameterFromDataBaseWhere:(NSString*)isMenu Parameter:(NSString*)parameter onSuccess:(SearchSuccess)success;
 

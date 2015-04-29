@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 #import "SearchFromDBHandler.h"
 #import "XCMultiSortTableView.h"
-#import "RecipeCollectionHeaderView.h"
 #import "CollectionViewCell.h"
 #import "AppDefine.h"
 #import "NSString+Array.h"
@@ -24,7 +23,6 @@
 #import <MBProgressHUD.h>
 
 @interface DetailViewController ()<XCMultiTableViewDataSource>
-//<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XCMultiTableViewDataSource,ShowAllImageDelegate>
 {
     XCMultiTableView * xcMultiTableView;
     NSString* carId;
@@ -47,7 +45,6 @@
 @property(strong,nonatomic)IBOutlet UIImageView* infoView;
 @property(retain,nonatomic)NSMutableArray* carInfoArray;
 @property(retain,nonatomic)NSMutableArray* carParameterArray;
-//@property(retain,nonatomic)NSMutableArray* imageArray;
 @property(retain,nonatomic)NSMutableDictionary* imageDic;
 @property(retain,nonatomic)NSMutableDictionary* infoDic;
 @property(retain,nonatomic)IBOutlet UIImageView* mainCarImg;
@@ -78,14 +75,10 @@
         self.imageButton.hidden = NO;
         carId = [[NSString alloc] init];
         carName = [[NSString alloc] init];
-//        self.imageArray = [[NSMutableArray alloc] init];
-        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            // 耗时的操作
+
             [[SearchFromDBHandler sharedSearchHandler] getCarInfoDataBaseWhere:detailValue OnSuccess:^(NSArray *array) {
                 self.carInfoArray = [NSMutableArray arrayWithArray:array];
                 [self prepareCarId];
-//                [self prepareCarInfoDataSource];
                 [self prepareCarImageDataSource];
                 [[SearchFromDBHandler sharedSearchHandler] getCarBrandInfoFromDataBaseWhere:carId OnSuccess:^(NSDictionary *dic) {
                     
@@ -103,21 +96,11 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self setCarInfoGridView];
-//                        [self setViewBackgroundShadow];
                     });
                 }];
 
             }];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-                // 更新界面
-//                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        
-//                [self setCarInfoGridView];
-//                [self setMainCarImageView:0];
-//                [self setColorSelectedView];
-//                [self setCarImageSectionView];
-//            });
-//        });
+
     }else if (self.detailItem && [detailKey isEqualToString:@"Menu"]){
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -159,12 +142,6 @@
     NSDictionary* detailDic = (NSDictionary*)_detailItem;
     NSString* detailKey = [detailDic allKeys][0];
     NSString* detailValue = [detailDic allValues][0];
-    
-//    UIButton* moreInfoButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [moreInfoButton setTitle:@"详细配置" forState:UIControlStateNormal];
-//    [moreInfoButton setFrame:CGRectMake(568, 29, 46, 30)];
-//    [moreInfoButton addTarget:self action:@selector(showMoreCarInfo:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.carBrandView addSubview:moreInfoButton];
     
     if ([detailKey isEqualToString:@"Car"]) {
         self.carPriceLabel.text =[NSString stringWithFormat:@"%@:%@",kCarBrand[0],[dataDic objectForKey:kCarBrand[0]]];
@@ -421,101 +398,6 @@
         [self.imageDic setObject:tempinnerImage forKey:@"InnerImage"];
     }
 }
-//
-//-(void)setCarImageSectionView
-//{
-//    [self.imageCollectionView reloadData];
-//}
-//
-//#pragma mark -  CollectionView DataSource
-//
-//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    if (!self.imageArray.count) {
-//        return 0;
-//    }
-//    return 4;
-//}
-//
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//{
-//    if (!self.imageArray.count) {
-//        return 0;
-//    }else if ([[self.imageArray objectAtIndex:section] count] > 12){
-//        return 12;
-//    }else{
-//        return [[self.imageArray objectAtIndex:section]count];
-//    }
-//}
-//
-//- (UICollectionViewCell *)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CollectionViewCell *cell = (CollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
-//    if (self.imageArray.count) {
-//        NSMutableString* completeurl = [[NSMutableString alloc] init];
-//        [completeurl appendString:BaseImageUrl];
-//        [completeurl appendString:carId];
-//        [completeurl appendString:kImageFloder[indexPath.section]];
-//        [completeurl appendString:@"/"];
-//    
-//        [completeurl appendString:[[self.imageArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-//        [cell.carImageView sd_setImageWithURL:[NSURL URLWithString:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//
-//    }
-//    return cell;
-//}
-//
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionReusableView *reusableview = nil;
-//    if (kind == UICollectionElementKindSectionHeader){
-//        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-//        
-//        headerView.delegate = self;
-//        if (!self.imageArray.count) {
-//            headerView.galleryNameLabel.text = @"";
-//            headerView.galleryNumberlabel.text = @"0 张";
-//        }else{
-//            headerView.galleryNameLabel.text = kImageCategory[indexPath.section];
-//            headerView.galleryNumberlabel.text = [NSString stringWithFormat:@"%ld 张",(unsigned long)[[self.imageArray objectAtIndex:indexPath.section] count]];
-//            headerView.showAllButton.tag = indexPath.section;
-//        }
-//        
-//        reusableview = headerView;
-//    
-//    }
-//    return reusableview;
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // 深拷贝数据
-//    NSMutableArray *imgList = [NSMutableArray arrayWithCapacity:[[self.imageArray objectAtIndex:indexPath.section]count]];
-//    for (int i = 0; i < [[self.imageArray objectAtIndex:indexPath.section]count]; i++) {
-//        NSMutableString* completeurl = [[NSMutableString alloc] init];
-//        [completeurl appendString:BaseImageUrl];
-//        [completeurl appendString:carId];
-//        [completeurl appendString:kImageFloder[indexPath.section]];
-//        [completeurl appendString:@"/"];
-//        [completeurl appendString:[self.imageArray objectAtIndex:indexPath.section][i]];
-//        [imgList addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-//    }
-//
-//    // 调用展示窗口
-//    ImgShowViewController *imgShow = [[ImgShowViewController alloc] initWithSourceData:imgList withIndex:indexPath.row];
-//    
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imgShow];
-//    
-//    [self presentViewController:nav animated:YES completion:nil];
-//}
-//
-//-(void)shouldShowAllImageView:(id)sender
-//{
-//    UIButton* button = (UIButton*)sender;
-//    DXImageViewController* semiViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DXSemi"];
-//    NSDictionary* cardic = @{@"sectionNumber":[NSString stringWithFormat:@"%d",button.tag],@"carid":carId,@"imageArray":self.imageArray,@"titlename":[NSString stringWithFormat:@"%@    %ld 张",kImageCategory[button.tag],(unsigned long)[[self.imageArray objectAtIndex:button.tag] count]]};
-//    [self setRightSemiViewController:semiViewController Title:cardic];
-//}
 
 -(IBAction)showMoreCarInfo:(id)sender{
     MoreCarInfoViewController* moreCarInfo = [self.storyboard instantiateViewControllerWithIdentifier:@"MoreCarInfo"];
@@ -528,7 +410,6 @@
 -(IBAction)showAllImage:(id)sender{
     CarImageViewController* carImage = [self.storyboard  instantiateViewControllerWithIdentifier:@"CarImage"];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:carImage];
-//    NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"imageArray":self.imageArray};
     NSDictionary* cardic = @{@"carid":carId,@"carname":carName,@"carimage":self.imageDic,@"carcolor":carColorArray};
     [carImage setDetailItem:cardic];
     [self presentViewController:nav animated:YES completion:nil];

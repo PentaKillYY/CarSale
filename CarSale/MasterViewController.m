@@ -10,7 +10,6 @@
 #import "MainSectionview.h"
 #import "AppDefine.h"
 #import "SearchFromDBHandler.h"
-#import "SecondMasterTableViewController.h"
 #import "DXMasterViewController.h"
 #import "UIView+Shadow.h"
 #import "UpdateHandler.h"
@@ -106,11 +105,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([[segue identifier] isEqualToString:@"PushToSecond"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        SecondMasterTableViewController* secondMaster = (SecondMasterTableViewController*)[segue destinationViewController];
-//        [secondMaster setSelectedItem:[[[self.dataAry objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row]];
-//    }
+
     if ([[segue identifier] isEqualToString:@"masterChange"]) {
         UITableViewCell *cell=(id)sender;
         NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
