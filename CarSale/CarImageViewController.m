@@ -13,6 +13,8 @@
 #import "AppDefine.h"
 #import "CarImageCollectionReusableView.h"
 #import "PopContentViewController.h"
+#import "NSArray+DeepCopy.h"
+#import "ImgShowViewController.h"
 @interface CarImageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DidSelectDelegate>
 {
     NSInteger foreCount;
@@ -21,6 +23,9 @@
     NSInteger sideCount;
     NSInteger cellCount;
     NSMutableArray* dataSourceArray;
+    NSMutableArray* tempArray;
+    NSPredicate *colorPred;
+    NSPredicate *typePred;
 }
 @property (nonatomic, strong) UIPopoverController *colorPopController;
 @property (nonatomic, strong) UIPopoverController* typePopController;
@@ -51,7 +56,7 @@
                         [completeurl appendString:[kImageFloder objectAtIndex:i]];
                         [completeurl appendString:@"/"];
                         [completeurl appendString:string];
-                        [dataSourceArray addObject:completeurl];
+                        [dataSourceArray addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                     }
                 }else if (i == 1){
                     backCount= [[[self.carDic objectForKey:@"carimage"] objectForKey:@"BackImage"] count];
@@ -63,7 +68,7 @@
                         [completeurl appendString:[kImageFloder objectAtIndex:i]];
                         [completeurl appendString:@"/"];
                         [completeurl appendString:string];
-                        [dataSourceArray addObject:completeurl];
+                        [dataSourceArray addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                     }
                 }else if (i == 2){
                     sideCount= [[[self.carDic objectForKey:@"carimage"] objectForKey:@"SideImage"] count];
@@ -75,7 +80,7 @@
                         [completeurl appendString:[kImageFloder objectAtIndex:i]];
                         [completeurl appendString:@"/"];
                         [completeurl appendString:string];
-                        [dataSourceArray addObject:completeurl];
+                        [dataSourceArray addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                     }
                     
                 }else{
@@ -89,7 +94,7 @@
                         [completeurl appendString:[kImageFloder objectAtIndex:i]];
                         [completeurl appendString:@"/"];
                         [completeurl appendString:string];
-                        [dataSourceArray addObject:completeurl];
+                        [dataSourceArray addObject:[completeurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                     }
                 }
             }
@@ -138,7 +143,11 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (self.carDic) {
-        return dataSourceArray.count;
+        if (tempArray) {
+            return tempArray.count;
+        }else{
+            return dataSourceArray.count;
+        }
     }
     return 0;
 }
@@ -153,15 +162,44 @@
         CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 1 , 1, 1 });
         [cell.imageView.layer setBorderColor:colorref];
         [cell.imageView.layer setBorderWidth:2.0];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[[dataSourceArray objectAtIndex:indexPath.row] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        if (tempArray) {
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[tempArray objectAtIndex:indexPath.row]]];
+        }else{
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[dataSourceArray objectAtIndex:indexPath.row]]];
+        }
     }
     
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (tempArray) {
+        ImgShowViewController *imgShow = [[ImgShowViewController alloc] initWithSourceData:tempArray withIndex:indexPath.row];
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imgShow];
+        
+        [self presentViewController:nav animated:YES completion:nil];
+        
+    }else{
+        ImgShowViewController *imgShow = [[ImgShowViewController alloc] initWithSourceData:dataSourceArray withIndex:indexPath.row];
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:imgShow];
+        
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+    
+}
+
 #pragma mark -NavAction
 - (void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.colorPopController.popoverVisible || self.typePopController.popoverVisible) {
+        
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+    }
 }
 
 -(void)showContentView:(id)sender{
@@ -176,7 +214,8 @@
             }
             PopContentViewController *contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopContent"];
             contentViewController.delegate = self;
-            [contentViewController setDetailItem:[self.carDic objectForKey:@"carcolor"]];
+            NSDictionary* dic = @{@"ContentId":@"color",@"Content":[self.carDic objectForKey:@"carcolor"]};
+            [contentViewController setDetailItem:dic];
             UIPopoverController *popController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
             popController.popoverContentSize = contentViewController.view.frame.size;
             self.colorPopController = popController;
@@ -193,7 +232,9 @@
             }
             PopContentViewController *contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopContent"];
             contentViewController.delegate = self;
-            [contentViewController setDetailItem:kImageCategory];
+            NSDictionary* dic = @{@"ContentId":@"type",@"Content":kImageCategory};
+
+            [contentViewController setDetailItem:dic];
             UIPopoverController *popController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
             popController.popoverContentSize = contentViewController.view.frame.size;
             self.typePopController = popController;
@@ -202,9 +243,50 @@
     }
 }
 
--(void)cellDidSelect:(NSString*)cellText{
+-(void)cellDidSelect:(NSString*)cellText Content:(NSString *)content{
     [self.colorPopController dismissPopoverAnimated:YES];
-    [self.colorPopController dismissPopoverAnimated:YES];
-   NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",cellText];
+    [self.typePopController dismissPopoverAnimated:YES];
+    
+    if ([content isEqualToString:@"color"]) {
+            if ([cellText isEqualToString:@"全部颜色"]) {
+                if (typePred) {
+                    tempArray = (NSMutableArray*)[[dataSourceArray mutableDeepCopy] filteredArrayUsingPredicate:typePred];
+                }else{
+                    tempArray = [dataSourceArray mutableDeepCopy];
+                }
+                colorPred = nil;
+            }else{
+                colorPred = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",[cellText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                if (typePred) {
+                    tempArray = (NSMutableArray*)[[dataSourceArray filteredArrayUsingPredicate:colorPred] filteredArrayUsingPredicate:typePred];
+                }else{
+                    tempArray = (NSMutableArray*)[dataSourceArray filteredArrayUsingPredicate:colorPred];
+                }
+            }
+        [self.collectionView reloadData];
+    }else{
+        if ([cellText isEqualToString:@"全部类型"]) {
+            if (colorPred) {
+                tempArray = (NSMutableArray*)[[dataSourceArray mutableDeepCopy] filteredArrayUsingPredicate:colorPred];
+            }else{
+                tempArray = [dataSourceArray mutableDeepCopy];
+            }
+            typePred = nil;
+        }else{
+            if (colorPred) {
+                NSUInteger index = [kImageCategory indexOfObject:cellText];
+                NSString* string = [kImageFloder objectAtIndex:index];
+                typePred = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",string];
+                tempArray = (NSMutableArray*)[[dataSourceArray filteredArrayUsingPredicate:colorPred] filteredArrayUsingPredicate:typePred];
+            }else{
+                NSUInteger index = [kImageCategory indexOfObject:cellText];
+                NSString* string = [kImageFloder objectAtIndex:index];
+                typePred = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",string];
+                tempArray = (NSMutableArray*)[dataSourceArray filteredArrayUsingPredicate:typePred];
+            }
+            
+        }
+        [self.collectionView reloadData];
+    }
 }
 @end

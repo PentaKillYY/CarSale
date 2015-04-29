@@ -12,6 +12,7 @@
 		0906D3941AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906D3901AD7743A0079132B /* XCMultiSortTableViewBGScrollView.m */; };
 		090F2D381ADCEE0800B148BB /* DXImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D341ADCEE0800B148BB /* DXImageViewController.m */; };
 		090F2D391ADCEE0800B148BB /* DXSemiViewControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */; };
+		097B93771AF0797E0093DC8B /* NSArray+DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 097B93761AF0797E0093DC8B /* NSArray+DeepCopy.m */; };
 		0984969F1AE0F9E8009000A1 /* URBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0984969E1AE0F9E8009000A1 /* URBAlertView.m */; };
 		098C6CBC1AD4BB57008511AA /* TopMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CB81AD4BB57008511AA /* TopMenu.png */; };
 		098C6CBD1AD4BB57008511AA /* MidMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 098C6CB91AD4BB57008511AA /* MidMenu@2x.png */; };
@@ -110,6 +111,8 @@
 		090F2D341ADCEE0800B148BB /* DXImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXImageViewController.m; sourceTree = "<group>"; };
 		090F2D351ADCEE0800B148BB /* DXSemiViewControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSemiViewControllerCategory.h; sourceTree = "<group>"; };
 		090F2D361ADCEE0800B148BB /* DXSemiViewControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSemiViewControllerCategory.m; sourceTree = "<group>"; };
+		097B93751AF0797E0093DC8B /* NSArray+DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DeepCopy.h"; sourceTree = "<group>"; };
+		097B93761AF0797E0093DC8B /* NSArray+DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DeepCopy.m"; sourceTree = "<group>"; };
 		0984969D1AE0F9E8009000A1 /* URBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBAlertView.h; sourceTree = "<group>"; };
 		0984969E1AE0F9E8009000A1 /* URBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBAlertView.m; sourceTree = "<group>"; };
 		098C6CB81AD4BB57008511AA /* TopMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopMenu.png; sourceTree = "<group>"; };
@@ -563,6 +566,8 @@
 				09BC70CE1ADB6E090085B4DE /* UILabel+CalculateSize.m */,
 				09BC70D01ADBB4AB0085B4DE /* UIColor+HexColor.h */,
 				09BC70D11ADBB4AB0085B4DE /* UIColor+HexColor.m */,
+				097B93751AF0797E0093DC8B /* NSArray+DeepCopy.h */,
+				097B93761AF0797E0093DC8B /* NSArray+DeepCopy.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				090F2D391ADCEE0800B148BB /* DXSemiViewControllerCategory.m in Sources */,
+				097B93771AF0797E0093DC8B /* NSArray+DeepCopy.m in Sources */,
 				099B5EE61ABA5E2A00DAA888 /* AppDelegate.m in Sources */,
 				09BC70D21ADBB4AB0085B4DE /* UIColor+HexColor.m in Sources */,
 				098CCF701AC52D3400D07E6D /* UpdateHandler.m in Sources */,
