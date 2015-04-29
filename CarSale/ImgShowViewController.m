@@ -110,7 +110,7 @@
 -(void)ImageIndex:(NSNotification*) notification
 {
     NSNumber *obj = [notification object];
-    self.title = [NSString stringWithFormat:@"%d/%ld",[obj intValue]+1,(unsigned long)[_data count]];
+    self.title = [NSString stringWithFormat:@"%d  /  %ld",[obj intValue]+1,(unsigned long)[_data count]];
 }
 @end
 
