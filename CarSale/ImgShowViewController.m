@@ -51,7 +51,7 @@
 {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%d / %ld",_index+1,(unsigned long)[_data count]];
+    self.title = [NSString stringWithFormat:@"%d  /  %ld",_index+1,(unsigned long)[_data count]];
     self.view.frame  = CGRectMake(0, 0, SCREEN_HEIGHT  , SCREEN_WIDTH);
         // 隐藏标签栏
     self.tabBarController.tabBar.hidden = YES;
