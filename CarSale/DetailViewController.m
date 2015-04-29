@@ -122,6 +122,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageButton.hidden = YES;
+            [self.carColorView setHidden:YES];
+            
             [self setCarBrandViewInfo:detailDic];
         });
         
@@ -329,11 +331,24 @@
     }else{
         width =100.0f * headData.count;
     }
-    if (60*leftTableData.count > 277) {
-        height = 277.0f;
+    NSDictionary* detailDic = (NSDictionary*)_detailItem;
+    NSString* detailKey = [detailDic allKeys][0];
+    if ([detailKey isEqualToString:@"Car"]) {
+        if (60*leftTableData.count > 277) {
+            height = 277.0f;
+        }else{
+            height = 277.0f;
+        }
+        self.carInfoView.frame = CGRectMake(self.carInfoView.frame.origin.x, self.carInfoView.frame.origin.y, self.carInfoView.frame.size.width, self.carInfoView.frame.size.height);
     }else{
-        height = 277.0f;
+        if (60*leftTableData.count > 527) {
+            height = 527.0f;
+        }else{
+            height = 527.0f;
+        }
+        self.carInfoView.frame = CGRectMake(self.carInfoView.frame.origin.x, self.carInfoView.frame.origin.y-250, self.carInfoView.frame.size.width, self.carInfoView.frame.size.height+250);
     }
+    
     
     xcMultiTableView = [[XCMultiTableView alloc] initWithFrame:CGRectInset(CGRectMake(10, 75, width+100, height+60), 5.0f, 5.0f)];
     xcMultiTableView.leftHeaderEnable = YES;
